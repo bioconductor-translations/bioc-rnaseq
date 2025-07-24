@@ -11,7 +11,6 @@ editor_options:
 
 
 
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Explain the formula notation and design matrices.
@@ -25,11 +24,10 @@ editor_options:
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 ## Loading required packages and reading data
 
-We start by loading a few packages that will be needed in this episode. 
-In particular, the [ExploreModelMatrix](https://bioconductor.org/packages/ExploreModelMatrix/) package provides resources for exploring design matrices in a graphical fashion, for easier interpretation. 
+We start by loading a few packages that will be needed in this episode.
+In particular, the [ExploreModelMatrix](https://bioconductor.org/packages/ExploreModelMatrix/) package provides resources for exploring design matrices in a graphical fashion, for easier interpretation.
 
 
 ``` r
@@ -41,10 +39,10 @@ suppressPackageStartupMessages({
 })
 ```
 
-Next, we read the metadata table for our data set. Because we want to explore many different design matrices, we will read in the 4th file we downloaded but haven't used yet: that for both Cerebellum and Spinal Cord samples (45 samples total). As seen in previous episodes, the metadata contains information about the age, sex, infection status, time of measurement and tissue of the collected samples. 
+Next, we read the metadata table for our data set. Because we want to explore many different design matrices, we will read in the 4th file we downloaded but haven't used yet: that for both Cerebellum and Spinal Cord samples (45 samples total). As seen in previous episodes, the metadata contains information about the age, sex, infection status, time of measurement and tissue of the collected samples.
 Note that Day0 always corresponds to non-infected samples, and that infected samples are collected on days 4 and 8.
-Moreover, all mice have the same age (8 weeks). 
-Hence, in the first part of this episode we consider only the sex, tissue and time variables further. 
+Moreover, all mice have the same age (8 weeks).
+Hence, in the first part of this episode we consider only the sex, tissue and time variables further.
 
 
 ``` r
@@ -92,7 +90,7 @@ table(meta$age)
      45 
 ```
 
-We can start by visualizing the number of observations for each combination of the three predictor variables. 
+We can start by visualizing the number of observations for each combination of the three predictor variables.
 
 
 ``` r
@@ -122,15 +120,14 @@ Based on this visualization, would you say that the data set is balanced, or are
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 ## Compare males and females, non-infected spinal cord
 
-Next, we will set up our first design matrix. 
-Here, we will focus on the uninfected (Day0) spinal cord samples, and our aim is to compare the male and female mice. 
-Thus, we first subset the metadata to only the samples of interest, and next set up and visualize the design matrix with a single predictor variable (sex). 
-By defining the design formula as `~ sex`, we tell R to include an intercept in the design. 
-This intercept will represent the 'baseline' level of the predictor variable, which in this case is selected to be the Female mice. 
-If not explicitly specified, R will order the values of the predictor in alphabetical order and select the first one as the reference or baseline level. 
+Next, we will set up our first design matrix.
+Here, we will focus on the uninfected (Day0) spinal cord samples, and our aim is to compare the male and female mice.
+Thus, we first subset the metadata to only the samples of interest, and next set up and visualize the design matrix with a single predictor variable (sex).
+By defining the design formula as `~ sex`, we tell R to include an intercept in the design.
+This intercept will represent the 'baseline' level of the predictor variable, which in this case is selected to be the Female mice.
+If not explicitly specified, R will order the values of the predictor in alphabetical order and select the first one as the reference or baseline level.
 
 
 ``` r
@@ -225,7 +222,7 @@ With this design, what is the interpretation of the `sexMale` coefficient?
 
 ### Challenge
 
-Set up the design formula to compare male and female spinal cord samples from Day0 as above, but instruct R to not include an intercept in the model. How does this change the interpretation of the coefficients? What contrast would have to be specified to compare the mean expression of a gene between male and female mice? 
+Set up the design formula to compare male and female spinal cord samples from Day0 as above, but instruct R to not include an intercept in the model. How does this change the interpretation of the coefficients? What contrast would have to be specified to compare the mean expression of a gene between male and female mice?
 
 :::::::::::::::  solution
 
@@ -373,8 +370,8 @@ vd$plotlist
 
 ## Factorial design without interactions
 
-Next, we again consider only non-infected mice, but fit a model incorporating both sex and tissue as predictors. 
-We assume that the tissue differences are the same for both male and female mice, and consequently fit an additive model, without interaction terms. 
+Next, we again consider only non-infected mice, but fit a model incorporating both sex and tissue as predictors.
+We assume that the tissue differences are the same for both male and female mice, and consequently fit an additive model, without interaction terms.
 
 
 ``` r
@@ -454,8 +451,8 @@ vd$plotlist
 
 ## Factorial design with interactions
 
-In the previous model, we assumed that the tissue differences were the same for both male and female mice. 
-To allow for the estimation of sex-specific tissue differences (at the expense of having one additional coefficient to estimate from the data), we can include an interaction term in the model. 
+In the previous model, we assumed that the tissue differences were the same for both male and female mice.
+To allow for the estimation of sex-specific tissue differences (at the expense of having one additional coefficient to estimate from the data), we can include an interaction term in the model.
 
 
 ``` r
@@ -538,7 +535,7 @@ vd$plotlist
 
 ## Combining multiple factors into one
 
-Sometimes, for experiments with multiple factors, it is easier to interpret coefficients and set up contrasts of interest if the factors are combined into one. 
+Sometimes, for experiments with multiple factors, it is easier to interpret coefficients and set up contrasts of interest if the factors are combined into one.
 Let's consider the previous example again, using this approach:
 
 
@@ -634,12 +631,11 @@ vd$plotlist
 
 <img src="fig/06-extra-design-rendered-factorial-combine-1.png" style="display: block; margin: auto;" />
 
-
 ## Paired design
 
-In this particular data set the samples are paired - the same mice have contributed both the cerebellum and spinal cord samples. 
-This information was not included in the previous models. 
-However, accounting for it can increase power to detect tissue differences by eliminating variability in baseline expression levels between mice. 
+In this particular data set the samples are paired - the same mice have contributed both the cerebellum and spinal cord samples.
+This information was not included in the previous models.
+However, accounting for it can increase power to detect tissue differences by eliminating variability in baseline expression levels between mice.
 Here, we define a paired design for the female non-infected mice, aimed at testing for differences between tissues after accounting for baseline differences between mice.
 
 
@@ -704,11 +700,11 @@ vd$plotlist
 
 ## Within- and between-subject comparisons
 
-In some situations, we need to combine the types of models considered above. 
-For example, let's say that we want to investigate if the tissue differences are different for infected and non-infected female mice. 
+In some situations, we need to combine the types of models considered above.
+For example, let's say that we want to investigate if the tissue differences are different for infected and non-infected female mice.
 In this case, each mice only contributes to one of the infection groups (each mice is either infected or non-infected), but contributes both a cerebellum and a spinal cord sample.
 One way to view this type of design is as two paired experiments, one for each infection group (see the [edgeR user guide section 3.5](https://www.bioconductor.org/packages/release/bioc/vignettes/edgeR/inst/doc/edgeRUsersGuide.pdf)).
-We can then easily compare the two tissues in each infection group, and contrast the tissue differences between the infection groups. 
+We can then easily compare the two tissues in each infection group, and contrast the tissue differences between the infection groups.
 
 
 ``` r
@@ -869,9 +865,9 @@ $`time = Day4`
 
 <img src="fig/06-extra-design-rendered-within-and-between-2.png" style="display: block; margin: auto;" />
 
-## How does this relate to the DESeq2 analysis we did in the previous episode? 
+## How does this relate to the DESeq2 analysis we did in the previous episode?
 
-Now that we have learnt more about interpreting design matrices, let's look back to the differential expression analysis we performed in the previous episode. 
+Now that we have learnt more about interpreting design matrices, let's look back to the differential expression analysis we performed in the previous episode.
 We will repeat the main lines of code here.
 
 
@@ -906,7 +902,7 @@ final dispersion estimates
 fitting model and testing
 ```
 
-`DESeq2` stores the design matrix in the object: 
+`DESeq2` stores the design matrix in the object:
 
 
 ``` r
@@ -959,7 +955,7 @@ resultsNames(dds)
 [4] "time_Day8_vs_Day0" 
 ```
 
-Let's visualize this design: 
+Let's visualize this design:
 
 
 ``` r
@@ -982,15 +978,15 @@ In the previous episode, we performed a test comparing Day8 samples to Day0 samp
 resTime <- results(dds, contrast = c("time", "Day8", "Day0"))
 ```
 
-From the figure above, we see that this comparison is represented by the `time_Day8_vs_Day0` coefficient, which corresponds to the fourth column in the design matrix. 
-Thus, an alternative way of specifying the contrast for the test would be: 
+From the figure above, we see that this comparison is represented by the `time_Day8_vs_Day0` coefficient, which corresponds to the fourth column in the design matrix.
+Thus, an alternative way of specifying the contrast for the test would be:
 
 
 ``` r
 resTimeNum <- results(dds, contrast = c(0, 0, 0, 1))
 ```
 
-Let's check if the results are comparable: 
+Let's check if the results are comparable:
 
 
 ``` r
@@ -1045,9 +1041,9 @@ abline(0, 1)
 
 ## Redo DESeq2 analysis with interaction
 
-Next, let's look at a different setup. 
-We still consider the sex and time predictors, but now we allow an interaction between them. 
-In other words, we allow the time effect to be different for males and females. 
+Next, let's look at a different setup.
+We still consider the sex and time predictors, but now we allow an interaction between them.
+In other words, we allow the time effect to be different for males and females.
 
 
 ``` r
@@ -1142,7 +1138,7 @@ attr(,"contrasts")$time
 [1] "contr.treatment"
 ```
 
-Let's visualize this design: 
+Let's visualize this design:
 
 
 ``` r
@@ -1158,8 +1154,8 @@ vd$plotlist
 
 <img src="fig/06-extra-design-rendered-vis-sex-time-int-1.png" style="display: block; margin: auto;" />
 
-Note that now, the `time_Day8_vs_Day0` coefficient represents the difference between Day8 and Day0 **for the Female samples**. 
-To get the corresponding difference for the male samples, we need to also add the interaction effect (`sexMale.timeDay8`). 
+Note that now, the `time_Day8_vs_Day0` coefficient represents the difference between Day8 and Day0 **for the Female samples**.
+To get the corresponding difference for the male samples, we need to also add the interaction effect (`sexMale.timeDay8`).
 
 
 ``` r
@@ -1263,7 +1259,7 @@ attr(,"contrasts")$sex_time
 [1] "contr.treatment"
 ```
 
-We again visualize this design: 
+We again visualize this design:
 
 
 ``` r
@@ -1299,7 +1295,7 @@ resultsNames(dds)
 resTimeIntSingle <- results(dds, contrast = c(1, 0, -1, -1, 0, 1))
 ```
 
-Check that these results agree with the ones obtained by fitting the model with the two factors and the interaction term. 
+Check that these results agree with the ones obtained by fitting the model with the two factors and the interaction term.
 
 
 ``` r
@@ -1384,12 +1380,10 @@ abline(0, 1)
 
 <img src="fig/06-extra-design-rendered-compare-sex-time-int-2.png" style="display: block; margin: auto;" />
 
-
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- The formula framework in R allows creation of design matrices, which details the variables expected to be associated with systematic differences in gene expression levels. 
-- Comparisons of interest can be defined using contrasts, which are linear combinations of the model coefficients. 
-
+- The formula framework in R allows creation of design matrices, which details the variables expected to be associated with systematic differences in gene expression levels.
+- Comparisons of interest can be defined using contrasts, which are linear combinations of the model coefficients.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

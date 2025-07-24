@@ -9,7 +9,6 @@ exercises: 45
 
 
 
-
 <style>
 body h3 {
     margin-top: 50px;
@@ -32,7 +31,6 @@ body h3 {
 - What are the commonly-used gene set databases?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 After we have obtained a list of differentially expressed (DE) genes, the next
 question naturally to ask is what biological functions these DE genes may
@@ -67,7 +65,6 @@ ORA analysis with the Bioconductor package **clusterProfiler**. And in the
 end, we will learn several visualization methods on the GSEA results.
 
 Following is a list of packages that will be used in this episode:
-
 
 
 ``` r
@@ -184,7 +181,6 @@ sets are from public databases), it is very possible that gene IDs are not
 consistent in the two. Later in this episode, we will learn how to perform
 gene ID conversion in the ORA analysis.
 
-
 Since the DE genes and the gene set can be mathematically thought of as two sets,
 a natural way is to first visualize them with a Venn diagram.
 
@@ -265,7 +261,6 @@ matrix(c(n_11, n_12, n_10, n_21, n_22, n_20, n_01, n_02, n),
 
 And we fill these numbers into the 2x2 contingency table:
 
-
 <center>
 |            | In the gene set | Not in the gene set | Total
 | ---------- | --------------- | --------------------| -------
@@ -273,7 +268,6 @@ And we fill these numbers into the 2x2 contingency table:
 | **Not DE** |     1121    |    20023         | 21144
 | **Total**  |     1134    |    20064         | 21198
 </center>
-
 
 Fisher's exact test can be used to test the associations of the two marginal
 attributes, i.e. is there a dependency of a gene to be a DE gene and to be in
@@ -321,14 +315,13 @@ t$p.value
 
 Odds ratio from the Fisher's exact test is defined as follows:
 
-$$ 
+$$
 \mathrm{Odds\_ratio} = \frac{n_{11}/n_{21}}{n_{12}/n_{22}} = \frac{n_{11}/n_{12}}{n_{21}/n_{22}} = \frac{n_{11} * n_{22}}{n_{12} * n_{21}}
 $$
 
 If there is no association between DE genes and the gene set, odds ratio is
 expected to be 1. And it is larger than 1 if there is an over-representation
 of DE genes on the gene set.
-
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -340,11 +333,12 @@ and put whether genes are DE on columns.
 
 <center>
 
-|                         |    DE       | Not DE    | Total
-| ----------------------- | ----------- | ----------| -------
-| **In the gene set**     |  13   |  1121 | 1134
-| **Not in the gene set** |  41   |  20023 | 20064
-| **Total**               |  54   |  21144 | 21198
+|                         | DE       | Not DE   | Total    |
+| ----------------------- | -------- | -------- | -------- |
+| **In the gene set**     | 13 | 1121 | 1134 |
+| **Not in the gene set** | 41 | 20023 | 20064 |
+| **Total**               | 54 | 21144 | 21198    |
+
 </center>
 
 And the corresponding `fisher.test()` is:
@@ -406,7 +400,6 @@ $$P = \frac{\binom{n_{1+}}{n_{11}} \binom{n_{2+}}{n_{21}}}{\binom{n}{n_{+1}}} = 
 
 where in the denominator is the number of ways of picking $n_{+1}$ genes
 without distinguishing whether they are DE or not.
-
 
 If $n$ (number of total genes), $n_{1+}$ (number of DE genes) and $n_{+1}$
 (size of gene set) are all fixed values, the number of DE genes that are
@@ -488,7 +481,6 @@ because in Fisher's exact test, hypergeometric distribution is the exact distrib
 Let's test the runtime of the two functions:
 
 
-
 ``` r
 library(microbenchmark)
 microbenchmark(
@@ -500,9 +492,9 @@ microbenchmark(
 
 ``` output
 Unit: microseconds
-   expr     min       lq      mean   median       uq      max neval
- fisher 245.528 251.1780 273.13470 254.2295 268.3155 1701.303   100
-  hyper   1.513   1.7285   2.58602   3.0855   3.2760    6.733   100
+   expr     min       lq      mean   median      uq     max neval
+ fisher 264.755 269.7735 281.90414 275.4040 287.707 489.133   100
+  hyper   1.543   1.7790   2.75299   2.4245   3.311  19.066   100
 ```
 
 It is very astonishing that `phyper()` is hundreds of times faster than
@@ -510,19 +502,17 @@ It is very astonishing that `phyper()` is hundreds of times faster than
 calculations besides calculating the _p_-value. So if you want to implement ORA
 analysis by yourself, always consider to use `phyper()`^[Also note `phyper()` can be vectorized.].
 
-
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ### Further reading
 
 Current tools also use Binomial distribution or chi-square test for ORA
-analysis. These two are just approximations. Please refer to [Rivals et al.,
+analysis. These two are just approximations. Please refer to Rivals et al.,
 Enrichment or depletion of a GO category within a class of genes: which test?
-Bioinformatics 2007](https://doi.org/10.1093/bioinformatics/btl633) which gives
+Bioinformatics 2007 which gives
 an overview of statistical methods used in ORA analysis.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 ## Gene set resources
 
@@ -620,7 +610,6 @@ data.frame(gene_set = rep(names(lt), times = sapply(lt, length)),
 Or genes be in the first column:
 
 
-
 ``` output
      gene   gene_set
 1  gene_1 gene_set_1
@@ -635,20 +624,17 @@ Or genes be in the first column:
 10 gene_7 gene_set_3
 ```
 
-
 Not very often, gene sets are represented as a matrix where one dimension
 corresponds to gene sets and the other dimension corresponds to genes. The
 values in the matix are binary where a value of 1 represents the gene is a
 member of the corresponding gene sets. In some methods, 1 is replaced by
 $w_{ij}$ to weight the effect of the genes in the gene set.
 
-
 ```
 #            gene_1 gene_2 gene_3 gene_4
 # gene_set_1      1      1      0      0
 # gene_set_2      1      0      1      1
 ```
-
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -711,13 +697,10 @@ $gene_set_3
 
 :::::::::::::::::::::::::::::::::::::::
 
-
-
 Next, let's go through gene sets from several major databases: the GO, KEGG
 and MSigDB databases.
 
-
-### Gene Ontology gene sets 
+### Gene Ontology gene sets
 
 Gene Ontology (GO) is the standard source for gene set enrichment analysis. GO
 contains three namespaces of biological process (BP), cellular components (CC)
@@ -728,17 +711,17 @@ Bioconductor release, there are the following organism packages:
 
 <center>
 
-|    Package    |   Organism   |   Package         | Organism
-| ------------- | ------------ | ----------------- | -----
-| org.Hs.eg.db  |  Human       | org.Mm.eg.db      | Mouse
-| org.Rn.eg.db  |  Rat         | org.Dm.eg.db      | Fly
-| org.At.tair.db|  Arabidopsis | org.Dr.eg.db      | Zebrafish
-| org.Sc.sgd.db |  Yeast       | org.Ce.eg.db      | Worm
-| org.Bt.eg.db  |  Bovine      | org.Gg.eg.db      | Chicken
-| org.Ss.eg.db  |  Pig         | org.Mmu.eg.db     | Rhesus
-| org.Cf.eg.db  |  Canine      | org.EcK12.eg.db   | E coli strain K12
-| org.Xl.eg.db  |  Xenopus     | org.Pt.eg.db      | Chimp
-| org.Ag.eg.db  |  Anopheles   | org.EcSakai.eg.db | E coli strain Sakai
+| Package                                                        | Organism    | Package                                                           | Organism            |
+| -------------------------------------------------------------- | ----------- | ----------------------------------------------------------------- | ------------------- |
+| org.Hs.eg.db   | Human       | org.Mm.eg.db      | Mouse               |
+| org.Rn.eg.db   | Rat         | org.Dm.eg.db      | Fly                 |
+| org.At.tair.db | Arabidopsis | org.Dr.eg.db      | Zebrafish           |
+| org.Sc.sgd.db  | Yeast       | org.Ce.eg.db      | Worm                |
+| org.Bt.eg.db   | Bovine      | org.Gg.eg.db      | Chicken             |
+| org.Ss.eg.db   | Pig         | org.Mmu.eg.db     | Rhesus              |
+| org.Cf.eg.db   | Canine      | org.EcK12.eg.db   | E coli strain K12   |
+| org.Xl.eg.db   | Xenopus     | org.Pt.eg.db      | Chimp               |
+| org.Ag.eg.db   | Anopheles   | org.EcSakai.eg.db | E coli strain Sakai |
 
 </center>
 
@@ -841,9 +824,7 @@ In most cases, because `OrgDb` is a standard Bioconductor data structure, most
 tools can automatically construct GO gene sets internally. There is no need
 for users to touch such low-level processings.
 
-
 :::::::::::::::::::::::::::::::::::::::::  callout
-
 
 ### Further reading
 
@@ -854,7 +835,6 @@ mapping between GO terms and genes. Readers can check the documentation of
 `org.Hs.egGO2ALLEGS`. Additional information on GO terms such as GO names and
 long descriptions are available in the package **GO.db**.
 
-
 Bioconductor has already provided a large number of organism packages.
 However, if the organism you are working on is not supported there, you may
 consider to look for it with the **AnnotationHub** package, which additionally
@@ -862,7 +842,6 @@ provide `OrgDb` objects for approximately 2000 organisms. The `OrgDb`
 object can be directly used in the ORA analysis introduced in the next section.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 ### KEGG gene sets
 
@@ -894,7 +873,6 @@ hsa:126 path:hsa00010
 We can directly read the text output with `read.table()`. Wrapping the URL
 with the function `url()`, you can pretend to directly read data from the
 remote web server.
-
 
 
 ``` r
@@ -952,15 +930,13 @@ head(keggNames)
 ```
 
 In both commands, we obtained data for human where the corresponding KEGG code
-is `"hsa"`. The code for other organisms can be found from the [KEGG
-website](https://www.genome.jp/kegg/) (e.g. `"mmu"` for mouse), or via
+is `"hsa"`. The code for other organisms can be found from the KEGG
+website (e.g. `"mmu"` for mouse), or via
 https://rest.kegg.jp/list/organism.
 
-
 Keep in mind, KEGG pathways are only free for academic users. If you use it
-for commercial purposes, [please contact the KEGG team to get a
-licence](https://www.kegg.jp/kegg/legal.html).
-
+for commercial purposes, please contact the KEGG team to get a
+licence.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
@@ -973,26 +949,26 @@ essentially, they all obtain KEGG data with the REST API.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 ### MSigDB gene sets
 
 [Molecular signature database](https://www.gsea-msigdb.org/gsea/msigdb/)
 (MSigDB) is a manually curated gene set database. Initially, it was proposed
-as a supplementary dataset for [the original GSEA
-paper](https://www.nature.com/articles/ng1180). Later it has been separated
+as a supplementary dataset for the original GSEA
+paper. Later it has been separated
 out and developed independently. In the first version in 2005, there were only
 two gene sets collections and in total 843 gene sets. Now in the newest version
 of MSigDB (v2023.1.Hs), it has grown into nine gene sets collections, covering
+
 > 30K gene sets. It provides gene sets on a variety of topics.
 
 MSigDB categorizes gene sets into nine collections where each collection
 focuses on a specific topic. For some collections, they are additionally split
 into sub-collections. There are several ways to obtain gene sets from MSigDB.
-One convenient way is to use the **msigdb** package. Another option is to use 
-the **msigdbr** CRAN package, which supports organisms other than human and 
+One convenient way is to use the **msigdb** package. Another option is to use
+the **msigdbr** CRAN package, which supports organisms other than human and
 mouse by mapping to orthologs.
 
-**msigdb** provides mouse and human gene sets, defined using either gene 
+**msigdb** provides mouse and human gene sets, defined using either gene
 symbols or Entrez IDs. Let's get the mouse collection.
 
 
@@ -1005,10 +981,10 @@ library(GSEABase)
 MSigDBGeneSets <- getMsigdb(org = "mm", id = "SYM", version = "7.4")
 ```
 
-The `msigdb` object above is a `GeneSetCollection`, storing all gene sets 
-from MSigDB. The `GeneSetCollection` object class is defined in the `GSEABase` 
-package, and it is a linear data structure similar to a base list object, but 
-with additional metadata such as the type of gene identifier or provenance 
+The `msigdb` object above is a `GeneSetCollection`, storing all gene sets
+from MSigDB. The `GeneSetCollection` object class is defined in the `GSEABase`
+package, and it is a linear data structure similar to a base list object, but
+with additional metadata such as the type of gene identifier or provenance
 information about the gene sets.
 
 
@@ -1033,7 +1009,7 @@ length(MSigDBGeneSets)
 [1] 44688
 ```
 
-Each signature is stored in a `GeneSet` object, also defined in the `GSEABase` 
+Each signature is stored in a `GeneSet` object, also defined in the `GSEABase`
 package.
 
 
@@ -1074,7 +1050,7 @@ geneIds(gs)
 [25] "Slc22a27" "Slc22a29" "Slc22a28" "Slc22a22"
 ```
 
-We can also subset the collection. First, let's list the available collections 
+We can also subset the collection. First, let's list the available collections
 and subcollections.
 
 
@@ -1114,8 +1090,8 @@ GeneSetCollection
     collectionType: BroadCollection (1 total)
 ```
 
-If you only want to use a sub-category, specify both the `collection` and 
-`subcollection` arguments to `subsetCollection`. 
+If you only want to use a sub-category, specify both the `collection` and
+`subcollection` arguments to `subsetCollection`.
 
 ## ORA with clusterProfiler
 
@@ -1191,7 +1167,7 @@ resTimeGO = enrichGO(gene = timeDEgenes,
 ```
 
 ``` output
---> Expected input gene ID: 11799,723903,20085,21853,21958,54388
+--> Expected input gene ID: 16571,27401,16183,26934,15469,72544
 ```
 
 ``` output
@@ -1269,7 +1245,7 @@ In the output data frame, there are the following columns:
 - `geneID`: A list of DE genes in the gene set.
 - `Count`: Number of DE genes in the gene set.
 
-You may have found the total number of DE genes changes. There are 
+You may have found the total number of DE genes changes. There are
 1134 in `timeDEgenes`, but only 983 DE genes are included in
 the enrichment result table (in the `GeneRatio` column). The main reason is by default DE genes not
 annotated to any GO gene set are filtered out. This relates to the "universe"
@@ -1347,7 +1323,6 @@ GO:0060326    41
 GO:0071674    32
 ```
 
-
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Perform GO enrichment on other organisms
@@ -1360,8 +1335,6 @@ perform ORA analysis on any organism as long as there is a corresponding
 - For other organisms, the `OrgDb` object can be found with the **AnnotationHub** package.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 ### KEGG pathway enrichment
 
@@ -1404,7 +1377,6 @@ head(EntrezIDs)
 We have to set the KEGG organism code if it is not human. Similarly it is suggested
 to set `pvalueCutoff` and `qvalueCutoff` both to 1 and convert the result to a
 data frame.
-
 
 
 ``` r
@@ -1468,7 +1440,6 @@ mmu04913    12
 mmu04061    14
 ```
 
-
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Perform KEGG pathway enrichment on other organisms
@@ -1480,14 +1451,13 @@ Extending ORA to other organisms is rather simple.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 ### MSigDB enrichment
 
 For MSigDB gene sets, there is no pre-defined enrichment function. We need to
 directly use the low-level enrichment function `enricher()` which accepts
 self-defined gene sets. The gene sets should be in a format of a two-column
 data frame of genes and gene sets (or a class that can be converted to a data
-frame). Let's use the hallmark collection (`hm`) that we generated above. 
+frame). Let's use the hallmark collection (`hm`) that we generated above.
 
 
 ``` r
@@ -1566,7 +1536,6 @@ HALLMARK_INTERFERON_ALPHA_RESPONSE    21
 HALLMARK_IL2_STAT5_SIGNALING          30
 ```
 
-
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ### Further reading
@@ -1636,7 +1605,6 @@ HALLMARK_APICAL_SURFACE                 84   21198 6.640741e-01 8.973974e-01
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-
 ### Choose a proper universe
 
 Finally, it is time to talk about the "universe" of ORA analysis which is
@@ -1644,15 +1612,14 @@ normally ignored in many analyses. In current tools, there are mainly
 following different universe settings:
 
 1. Using all genes in the genome, this also includes non-protein coding genes.
-   For human, the size of universe is 60k ~ 70k.
+  For human, the size of universe is 60k ~ 70k.
 2. Using all protein-coding genes. For human, the size of universe is ~ 20k.
 3. In the era of microarray, total genes that are measured on the chip is
-   taken as the universe. For RNASeq, since reads are aligned to all genes, we
-   can set a cutoff and only use those "expressed" genes as the universe.
+  taken as the universe. For RNASeq, since reads are aligned to all genes, we
+  can set a cutoff and only use those "expressed" genes as the universe.
 4. Using all genes in a gene sets collection. Then the size of the universe
-   depends on the size of the gene sets collection. For example GO gene sets
-   collection is much larger than the KEGG pathway gene sets collection.
-
+  depends on the size of the gene sets collection. For example GO gene sets
+  collection is much larger than the KEGG pathway gene sets collection.
 
 If the universe is set, DE genes as well as genes in the gene sets are first
 intersected to the universe. However, in general the universe affects three
@@ -1666,7 +1633,6 @@ genes or non-gene-set genes.
 | **Not DE** |     $n_{21}$    |    $\color{red}{n_{22}}$         | $\color{red}{n_{2+}}$
 | **Total**  |     $n_{+1}$    |    $\color{red}{n_{+2}}$         | $\color{red}{n}$
 </center>
-
 
 In the contingency table, we are testing the dependency of whether genes being
 DE and whether genes being in the gene set. In the model, each gene has a
@@ -1683,17 +1649,13 @@ $n_{20}$, makes the observation $n_{11}$ getting further away from the null
 distribution, eventually generates a smaller _p_-value. For the similar
 reason, small universes tend to generate large _p_-values.
 
-
 In `enrichGO()`/`enrichKEGG()`/`enricher()`, universe genes can be set via the
 `universe` argument. By default the universe is the total genes in the gene
 sets collection. When a self-defined universe is provided, this might be
-different from what you may think, the universe is [_the intersection of
-user-provided universe and total genes in the gene set
-collection_](https://github.com/YuLab-SMU/DOSE/blob/93a4b981c0251e5c6eb1f2413f4a02b8e6d06ff5/R/enricher_internal.R#L65C43-L65C51).
+different from what you may think, the universe is .
 Thus the universe setting in **clusterProfiler** is very conservative.
 
 Check the more discusstions at https://twitter.com/mdziemann/status/1626407797939384320.
-
 
 We can do a simple experiment on the small MSigDB hallmark gene sets. We use
 the `ora()` function which we have implemented in previous "Further reading"
@@ -1867,7 +1829,7 @@ statistically.] in it.
 We can measure the enrichment in two other ways. First, the log2 fold
 enrichment, defined as:
 
-$$ \log_2(\mathrm{Fold\_enrichment}) = \frac{n_{11}/n_{10}}{n_{01}/n} = \frac{n_{11}/n_{01}}{n_{10}/n} = \frac{n_{11}n}{n_{10}n_{01}} $$
+$$\log_2(\mathrm{Fold\_enrichment}) = \frac{n_{11}/n_{10}}{n_{01}/n} = \frac{n_{11}/n_{01}}{n_{10}/n} = \frac{n_{11}n}{n_{10}n_{01}}$$
 
 which is the log2 of the ratio of _DE% in the gene set_ and _DE% in the
 universe_ or the log2 of the ratio of _gene\_set% in the DE genes_ and
@@ -1880,11 +1842,11 @@ resTimeGOTable$log2_Enrichment = log( (n_11/n_10)/(n_01/n) )
 
 Second, it is also common to use _z_-score which is
 
-$$ z = \frac{n_{11} - \mu}{\sigma} $$
+$$z = \frac{n_{11} - \mu}{\sigma}$$
 
-where $\mu$ and $\sigma$ are [the mean and standard deviation of the
+where $\mu$ and $\sigma$ are the mean and standard deviation of the
 hypergeometric
-distribution](https://en.wikipedia.org/wiki/Hypergeometric_distribution). They
+distribution. They
 can be calculated as:
 
 
@@ -1896,7 +1858,6 @@ n_20 = n - n_10
 hyper_var = n_01*n_10/n * n_20*n_02/n/(n-1)
 resTimeGOTable$zScore = (n_11 - hyper_mean)/sqrt(hyper_var)
 ```
-
 
 We will use log2 fold change as the primary variable to map to bar heights and
 `DE_Ratio` as the secondary variable to map to colors. This can be done
@@ -1969,7 +1930,6 @@ reach a small _p_-value with a small DE_ratio and a small log2 fold
 enrichment, while a small gene set needs to have a large DE ratio to be
 significant.
 
-
 It is also common that we perform ORA analysis on up-regulated genes and
 down-regulated separately. And we want to combine the significant gene sets from
 the two ORA analysis in one plot. In the following code, we first generate
@@ -2037,7 +1997,6 @@ ggplot(rbind(resTimeGOupTable[1:5, ],
 
 <img src="fig/07-gene-set-analysis-rendered-plot-up-down-1.png" style="display: block; margin: auto;" />
 
-
 Specifically for GO enrichment, it is often that GO enrichment returns a long
 list of significant GO terms (e.g. several hundreds). This makes it difficult
 to summarize the common functions from the long list. The last package we will
@@ -2071,14 +2030,12 @@ the cutoff are set as 1 (DE gene) and others are set as 0 (non-DE gene). This
 binary transformation over-simplifies the problem and a lot of information are
 lost. There is second class of gene set enrichment analysis methods which
 takes the continuous gene-level score as input and weights the importance of a
-gene in the gene set. Please refer to [Subramanian et. al. Gene set enrichment
+gene in the gene set. Please refer to Subramanian et. al. Gene set enrichment
 analysis: A knowledge-based approach for interpreting genome-wide expression
-profiles, PNAS 2005](https://www.pnas.org/doi/10.1073/pnas.0506580102) for
+profiles, PNAS 2005 for
 more information.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
@@ -2087,8 +2044,6 @@ more information.
 - In R, it is easy to obtain gene sets from a large number of sources.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 <script>
 $(function() {
