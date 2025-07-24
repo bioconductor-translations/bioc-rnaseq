@@ -576,18 +576,33 @@ benchmarking</a>）を得ることができる。
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<div class="質問">
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
 <ul>
 <li>RStudioプロジェクトを使用して分析プロジェクトを管理するにはどうすればよいですか？</li>
 <li>分析プロジェクトのためのディレクトリを効果的に整理する方法は？</li>
 <li>インターネットからデータセットをダウンロードして、ファイルとして保存する方法。</li>
 </ul>
 </div>
-<div class="目的">
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
 <ul>
 <li>RStudioプロジェクトを作成し、分析プロジェクトに関連するファイルを保存するためのディレクトリを作成します。</li>
 <li>次のエピソードで使用するデータセットをダウンロードします。</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <section><h2 class="section-heading" id="イントロダクション">イントロダクション<a class="anchor" aria-label="anchor" href="#%E3%82%A4%E3%83%B3%E3%83%88%E3%83%AD%E3%83%80%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3"></a>
 </h2>
@@ -598,23 +613,35 @@ benchmarking</a>）を得ることができる。
 これらが最初からうまく管理されていないと、プロジェクトを休止した後に再開することや、プロジェクトを他の人と共有することは困難かつ時間を要します。
 さらに、適切な整理がなければ、プロジェクトの複雑さが頻繁に<code>setwd</code>関数を使用して異なる作業ディレクトリ間を切り替えることにつながり、無秩序な作業スペースが生じます。</p>
 <p>このレッスンでは、最初にデータ分析プロジェクトで使用し生成されたファイルを、_作業ディレクトリ_内で管理するための効果的な戦略に焦点を当てます。</p>
-</section><div class="section level2 前提条件">
-<h2 id="作業ディレクトリとは何ですか">作業ディレクトリとは何ですか？<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B"></a>
-</h2>
+<div id="作業ディレクトリとは何ですか" class="callout prereq">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check"></i>
+</div>
+<div id="作業ディレクトリとは何ですか" class="callout-inner">
+<h3 class="callout-title">作業ディレクトリとは何ですか？</h3>
+<div class="callout-content">
 <p>Rにおける作業ディレクトリは、Rがファイルを読み込んだり保存したりするために探すコンピュータ上のデフォルトの場所です。
 詳細は、私たちの <a href="https://carpentries-incubator.github.io/bioc-intro/20-r-rstudio.html#the-working-directory" class="external-link">データ分析のためのRとBioconductorの紹介</a>
 レッスンにあります。</p>
 </div>
+</div>
+</div>
 <p>次に、RStudioに組み込まれた分析プロジェクトを管理するための機能であるRStudioプロジェクトを活用する方法を学びます。</p>
-<div class="section level2 前提条件">
-<h2 id="rstudioとは何ですか">RStudioとは何ですか？<a class="anchor" aria-label="anchor" href="#rstudio%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B"></a>
-</h2>
+<div id="rstudioとは何ですか" class="callout prereq">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check"></i>
+</div>
+<div id="rstudioとは何ですか" class="callout-inner">
+<h3 class="callout-title">RStudioとは何ですか？</h3>
+<div class="callout-content">
 <p>RStudioは、科学者やソフトウェア開発者によって広く使われる無料の統合開発環境（IDE）で、ソフトウェアの開発やデータセットの分析に使用されます。
 RStudioまたはその一般的な使用に関する支援が必要な場合は、私たちの <a href="https://carpentries-incubator.github.io/bioc-intro/20-r-rstudio.html" class="external-link">データ分析のためのRとBioconductorの紹介</a>
 レッスンをご参照ください。</p>
 </div>
+</div>
+</div>
 <p>最後に、このレッスンでは、次のエピソードのためのデータをダウンロードするためにR関数<code>download.file</code>を使用する方法も学びます。</p>
-<section><h2 class="section-heading" id="作業ディレクトリの構造">作業ディレクトリの構造<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E6%A7%8B%E9%80%A0"></a>
+</section><section><h2 class="section-heading" id="作業ディレクトリの構造">作業ディレクトリの構造<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E6%A7%8B%E9%80%A0"></a>
 </h2>
 <hr class="half-width">
 <p>より効率的なワークフローのために、分析に関連付けられたすべてのファイルを特定のディレクトリに保存することをお勧めします。これは、プロジェクトの作業ディレクトリとして機能します。
@@ -637,18 +664,33 @@ RNA-seqデータ分析の場合、このディレクトリには通常、<code>*
 </ul>
 <p>プロジェクトが複雑になるにつれ、追加のディレクトリまたはサブディレクトリを作成する必要があるかもしれません。
 それでも、上記の4つのディレクトリは作業ディレクトリの基盤として機能するべきです。</p>
-</section><div class="section level2 課題">
-<h2 id="次のエピソードのためのディレクトリを作成する">次のエピソードのためのディレクトリを作成する<a class="anchor" aria-label="anchor" href="#%E6%AC%A1%E3%81%AE%E3%82%A8%E3%83%94%E3%82%BD%E3%83%BC%E3%83%89%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"></a>
-</h2>
+<div id="次のエピソードのためのディレクトリを作成する" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="次のエピソードのためのディレクトリを作成する" class="callout-inner">
+<h3 class="callout-title">次のエピソードのためのディレクトリを作成する</h3>
+<div class="callout-content">
 <p>このエピソードとレッスンの残りの部分のために作業ディレクトリとするために、コンピュータ上にディレクトリを作成します（ワークショップの例では<code>bio_rnaseq</code>という名前のディレクトリを使用します）。
 次に、この選択したディレクトリ内に、前述の4つの基本的なディレクトリ（<code>data</code>、<code>scripts</code>、<code>documents</code>、および<code>output</code>）を作成します。</p>
-<div class="解決策">
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div class="accordion-body">
 <figure style="text-align: center"><img src="fig/02_setup/folders_working_dir.png" alt="Your working directory should look like this" width="1221" class="figure mx-auto d-block"><figcaption>
 Your working directory should look like this
 </figcaption></figure>
 </div>
 </div>
-<section><h2 class="section-heading" id="rstudioプロジェクトを使用して作業ディレクトリを管理する">RStudioプロジェクトを使用して作業ディレクトリを管理する<a class="anchor" aria-label="anchor" href="#rstudio%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B"></a>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="rstudioプロジェクトを使用して作業ディレクトリを管理する">RStudioプロジェクトを使用して作業ディレクトリを管理する<a class="anchor" aria-label="anchor" href="#rstudio%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B"></a>
 </h2>
 <hr class="half-width">
 <p>前述の通り、RStudioプロジェクトは、分析プロジェクトを管理するためにRStudioに組み込まれた機能です。
@@ -710,9 +752,13 @@ GEOからデータをダウンロードすることは簡単ではなく（こ�
 <figure style="text-align: center"><img src="fig/02_setup/data_folder.png" alt="A file named GSE96870_counts_cerebellum.csv should now reside in the data folder." width="1632" class="figure mx-auto d-block"><figcaption>
 A file named GSE96870_counts_cerebellum.csv should now reside in the
 data folder.
-</figcaption></figure></section><div class="section level2 課題">
-<h2 id="残りのデータセットファイルをダウンロードする">残りのデータセットファイルをダウンロードする<a class="anchor" aria-label="anchor" href="#%E6%AE%8B%E3%82%8A%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B"></a>
-</h2>
+</figcaption></figure><div id="残りのデータセットファイルをダウンロードする" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="残りのデータセットファイルをダウンロードする" class="callout-inner">
+<h3 class="callout-title">残りのデータセットファイルをダウンロードする</h3>
+<div class="callout-content">
 <p>このレッスンの残りの部分に必要なデータセットファイルがあと3つあります。</p>
 <table class="table">
 <colgroup>
@@ -739,7 +785,16 @@ data folder.
 </tbody>
 </table>
 <p><code>download.file</code>関数を使用して、作業ディレクトリの<code>data</code>フォルダにファイルをダウンロードします。</p>
-<div class="解決策">
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -761,13 +816,24 @@ data folder.
 </div>
 </div>
 </div>
-<div class="要点">
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Key Points</h3>
+<div class="callout-content">
 <ul>
 <li>プロジェクトに必要なファイルを作業ディレクトリに適切に整理することは、秩序を維持し、将来のアクセスを容易にするために重要です。</li>
 <li>RStudioプロジェクトは、プロジェクトの作業ディレクトリを管理し、分析を促進するための貴重なツールとして機能します。</li>
 <li>Rにおける<code>download.file</code>関数は、インターネットからデータセットをダウンロードするために使用できます。</li>
 </ul>
-</div></section><section id="aio-03-import-annotate"><p>Content from <a href="03-import-annotate.html">Importing and annotating quantified data into R</a></p>
+</div>
+</div>
+</div>
+</section></section><section id="aio-03-import-annotate"><p>Content from <a href="03-import-annotate.html">Importing and annotating quantified data into R</a></p>
 <hr>
 <p> Last updated on 2025-07-24 |
 
@@ -2260,7 +2326,7 @@ suggest?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>The major signal in this data (37% variance) is associated with
@@ -2303,7 +2369,7 @@ class <code>DESeqTransform</code> as input. You can transform a
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2803,7 +2869,7 @@ lesson?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>In the lesson example the last variable of the design formula is
 <code>time</code>. The <strong>reference level</strong> (first in
@@ -2907,7 +2973,7 @@ time.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3046,7 +3112,7 @@ results then?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3474,7 +3540,7 @@ mean expression of a gene between male and female mice?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3561,7 +3627,7 @@ Day4, Day8) in the male spinal cord samples, and visualize it using
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5369,9 +5435,9 @@ distribution of its statistic.</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Unit: microseconds
-   expr     min       lq      mean   median       uq     max neval
- fisher 248.774 252.4660 262.00316 256.6940 269.2970 466.941   100
-  hyper   1.573   1.7785   2.76283   3.0005   3.2455  15.629   100</code></pre>
+   expr     min       lq      mean   median      uq     max neval
+ fisher 249.425 252.3750 264.31788 257.2495 270.218 488.721   100
+  hyper   1.573   1.8185   2.69636   3.0360   3.241   7.053   100</code></pre>
 </div>
 <p>It is very astonishing that <code>phyper()</code> is hundreds of
 times faster than <code>fisher.test()</code>. Main reason is in
@@ -6155,7 +6221,7 @@ sets are automatically retrieved and processed from
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>--&gt; Expected input gene ID: 59014,234396,13990,230784,75619,17686</code></pre>
+<pre class="output" tabindex="0"><code>--&gt; Expected input gene ID: 27395,83945,93759,245109,55982,216049</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
