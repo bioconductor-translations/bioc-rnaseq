@@ -204,7 +204,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="03-import-annotate.html">3. Importing and annotating quantified data into R</a>
+        <a href="03-import-annotate.html">3. Rに量的データをインポートして注釈を付ける</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -576,18 +576,33 @@ benchmarking</a>）を得ることができる。
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<div class="質問">
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
 <ul>
 <li>RStudioプロジェクトを使用して分析プロジェクトを管理するにはどうすればよいですか？</li>
 <li>分析プロジェクトのためのディレクトリを効果的に整理する方法は？</li>
 <li>インターネットからデータセットをダウンロードして、ファイルとして保存する方法。</li>
 </ul>
 </div>
-<div class="目的">
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
 <ul>
 <li>RStudioプロジェクトを作成し、分析プロジェクトに関連するファイルを保存するためのディレクトリを作成します。</li>
 <li>次のエピソードで使用するデータセットをダウンロードします。</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <section><h2 class="section-heading" id="イントロダクション">イントロダクション<a class="anchor" aria-label="anchor" href="#%E3%82%A4%E3%83%B3%E3%83%88%E3%83%AD%E3%83%80%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3"></a>
 </h2>
@@ -598,23 +613,35 @@ benchmarking</a>）を得ることができる。
 これらが最初からうまく管理されていないと、プロジェクトを休止した後に再開することや、プロジェクトを他の人と共有することは困難かつ時間を要します。
 さらに、適切な整理がなければ、プロジェクトの複雑さが頻繁に<code>setwd</code>関数を使用して異なる作業ディレクトリ間を切り替えることにつながり、無秩序な作業スペースが生じます。</p>
 <p>このレッスンでは、最初にデータ分析プロジェクトで使用し生成されたファイルを、_作業ディレクトリ_内で管理するための効果的な戦略に焦点を当てます。</p>
-</section><div class="section level2 前提条件">
-<h2 id="作業ディレクトリとは何ですか">作業ディレクトリとは何ですか？<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B"></a>
-</h2>
+<div id="作業ディレクトリとは何ですか" class="callout prereq">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check"></i>
+</div>
+<div id="作業ディレクトリとは何ですか" class="callout-inner">
+<h3 class="callout-title">作業ディレクトリとは何ですか？</h3>
+<div class="callout-content">
 <p>Rにおける作業ディレクトリは、Rがファイルを読み込んだり保存したりするために探すコンピュータ上のデフォルトの場所です。
 詳細は、私たちの <a href="https://carpentries-incubator.github.io/bioc-intro/20-r-rstudio.html#the-working-directory" class="external-link">データ分析のためのRとBioconductorの紹介</a>
 レッスンにあります。</p>
 </div>
+</div>
+</div>
 <p>次に、RStudioに組み込まれた分析プロジェクトを管理するための機能であるRStudioプロジェクトを活用する方法を学びます。</p>
-<div class="section level2 前提条件">
-<h2 id="rstudioとは何ですか">RStudioとは何ですか？<a class="anchor" aria-label="anchor" href="#rstudio%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B"></a>
-</h2>
+<div id="rstudioとは何ですか" class="callout prereq">
+<div class="callout-square">
+<i class="callout-icon" data-feather="check"></i>
+</div>
+<div id="rstudioとは何ですか" class="callout-inner">
+<h3 class="callout-title">RStudioとは何ですか？</h3>
+<div class="callout-content">
 <p>RStudioは、科学者やソフトウェア開発者によって広く使われる無料の統合開発環境（IDE）で、ソフトウェアの開発やデータセットの分析に使用されます。
 RStudioまたはその一般的な使用に関する支援が必要な場合は、私たちの <a href="https://carpentries-incubator.github.io/bioc-intro/20-r-rstudio.html" class="external-link">データ分析のためのRとBioconductorの紹介</a>
 レッスンをご参照ください。</p>
 </div>
+</div>
+</div>
 <p>最後に、このレッスンでは、次のエピソードのためのデータをダウンロードするためにR関数<code>download.file</code>を使用する方法も学びます。</p>
-<section><h2 class="section-heading" id="作業ディレクトリの構造">作業ディレクトリの構造<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E6%A7%8B%E9%80%A0"></a>
+</section><section><h2 class="section-heading" id="作業ディレクトリの構造">作業ディレクトリの構造<a class="anchor" aria-label="anchor" href="#%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E6%A7%8B%E9%80%A0"></a>
 </h2>
 <hr class="half-width">
 <p>より効率的なワークフローのために、分析に関連付けられたすべてのファイルを特定のディレクトリに保存することをお勧めします。これは、プロジェクトの作業ディレクトリとして機能します。
@@ -637,18 +664,33 @@ RNA-seqデータ分析の場合、このディレクトリには通常、<code>*
 </ul>
 <p>プロジェクトが複雑になるにつれ、追加のディレクトリまたはサブディレクトリを作成する必要があるかもしれません。
 それでも、上記の4つのディレクトリは作業ディレクトリの基盤として機能するべきです。</p>
-</section><div class="section level2 課題">
-<h2 id="次のエピソードのためのディレクトリを作成する">次のエピソードのためのディレクトリを作成する<a class="anchor" aria-label="anchor" href="#%E6%AC%A1%E3%81%AE%E3%82%A8%E3%83%94%E3%82%BD%E3%83%BC%E3%83%89%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B"></a>
-</h2>
+<div id="次のエピソードのためのディレクトリを作成する" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="次のエピソードのためのディレクトリを作成する" class="callout-inner">
+<h3 class="callout-title">次のエピソードのためのディレクトリを作成する</h3>
+<div class="callout-content">
 <p>このエピソードとレッスンの残りの部分のために作業ディレクトリとするために、コンピュータ上にディレクトリを作成します（ワークショップの例では<code>bio_rnaseq</code>という名前のディレクトリを使用します）。
 次に、この選択したディレクトリ内に、前述の4つの基本的なディレクトリ（<code>data</code>、<code>scripts</code>、<code>documents</code>、および<code>output</code>）を作成します。</p>
-<div class="解決策">
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
 <figure style="text-align: center"><img src="fig/02_setup/folders_working_dir.png" alt="Your working directory should look like this" width="1221" class="figure mx-auto d-block"><figcaption>
 Your working directory should look like this
 </figcaption></figure>
 </div>
 </div>
-<section><h2 class="section-heading" id="rstudioプロジェクトを使用して作業ディレクトリを管理する">RStudioプロジェクトを使用して作業ディレクトリを管理する<a class="anchor" aria-label="anchor" href="#rstudio%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B"></a>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="rstudioプロジェクトを使用して作業ディレクトリを管理する">RStudioプロジェクトを使用して作業ディレクトリを管理する<a class="anchor" aria-label="anchor" href="#rstudio%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B"></a>
 </h2>
 <hr class="half-width">
 <p>前述の通り、RStudioプロジェクトは、分析プロジェクトを管理するためにRStudioに組み込まれた機能です。
@@ -710,9 +752,13 @@ GEOからデータをダウンロードすることは簡単ではなく（こ�
 <figure style="text-align: center"><img src="fig/02_setup/data_folder.png" alt="A file named GSE96870_counts_cerebellum.csv should now reside in the data folder." width="1632" class="figure mx-auto d-block"><figcaption>
 A file named GSE96870_counts_cerebellum.csv should now reside in the
 data folder.
-</figcaption></figure></section><div class="section level2 課題">
-<h2 id="残りのデータセットファイルをダウンロードする">残りのデータセットファイルをダウンロードする<a class="anchor" aria-label="anchor" href="#%E6%AE%8B%E3%82%8A%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B"></a>
-</h2>
+</figcaption></figure><div id="残りのデータセットファイルをダウンロードする" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="残りのデータセットファイルをダウンロードする" class="callout-inner">
+<h3 class="callout-title">残りのデータセットファイルをダウンロードする</h3>
+<div class="callout-content">
 <p>このレッスンの残りの部分に必要なデータセットファイルがあと3つあります。</p>
 <table class="table">
 <colgroup>
@@ -739,7 +785,16 @@ data folder.
 </tbody>
 </table>
 <p><code>download.file</code>関数を使用して、作業ディレクトリの<code>data</code>フォルダにファイルをダウンロードします。</p>
-<div class="解決策">
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -761,13 +816,24 @@ data folder.
 </div>
 </div>
 </div>
-<div class="要点">
+</div>
+</div>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<div class="callout-inner">
+<h3 class="callout-title">Key Points</h3>
+<div class="callout-content">
 <ul>
 <li>プロジェクトに必要なファイルを作業ディレクトリに適切に整理することは、秩序を維持し、将来のアクセスを容易にするために重要です。</li>
 <li>RStudioプロジェクトは、プロジェクトの作業ディレクトリを管理し、分析を促進するための貴重なツールとして機能します。</li>
 <li>Rにおける<code>download.file</code>関数は、インターネットからデータセットをダウンロードするために使用できます。</li>
 </ul>
-</div></section><section id="aio-03-import-annotate"><p>Content from <a href="03-import-annotate.html">Importing and annotating quantified data into R</a></p>
+</div>
+</div>
+</div>
+</section></section><section id="aio-03-import-annotate"><p>Content from <a href="03-import-annotate.html">Rに量的データをインポートして注釈を付ける</a></p>
 <hr>
 <p> Last updated on 2025-07-24 |
 
@@ -777,25 +843,22 @@ data folder.
         </div>
 <p>::::::::::::::::::::::::::::::::::::::: objectives</p>
 <ul>
-<li>Learn how to import the quantifications into a SummarizedExperiment
-object.</li>
-<li>Learn how to add additional gene annotations to the object.
+<li>量的データをSummarizedExperimentオブジェクトにインポートする方法を学びます。</li>
+<li>オブジェクトに追加の遺伝子注釈を追加する方法を学びます。
 ::::::::::::::::::::::::::::::::::::::::::::::::::</li>
 </ul>
 <p>:::::::::::::::::::::::::::::::::::::::: questions</p>
 <ul>
-<li>How can one import quantified gene expression data into an object
-suitable for downstream statistical analysis in R?</li>
-<li>What types of gene identifiers are typically used, and how are
-mappings between them done?
+<li>量的遺伝子発現データをRで下流の統計分析に適したオブジェクトにインポートするにはどうすればよいですか？</li>
+<li>通常使用される遺伝子識別子の種類は何ですか？
+それらのマッピングはどのように行われますか？
 ::::::::::::::::::::::::::::::::::::::::::::::::::</li>
 </ul>
-<section><h2 class="section-heading" id="load-packages">Load packages<a class="anchor" aria-label="anchor" href="#load-packages"></a>
+<section><h2 class="section-heading" id="パッケージを読み込む">パッケージを読み込む<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"></a>
 </h2>
 <hr class="half-width">
-<p>In this episode we will use some functions from add-on R packages. In
-order to use them, we need to load them from our
-<code>library</code>:</p>
+<p>このエピソードでは、アドオンRパッケージの関数をいくつか使用します。
+それらを使用するためには、<code>library</code>から読み込む必要があります。</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -807,35 +870,26 @@ order to use them, we need to load them from our
 <span>    <span class="kw">library</span><span class="op">(</span><span class="va">SummarizedExperiment</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre>
 </div>
-<p>If you get any error messages about
-<code>there is no package called 'XXXX'</code> it means you have not
-installed the package/s yet for this version of R. See the bottom of the
-<a href="https://carpentries-incubator.github.io/bioc-rnaseq/index.html" class="external-link">Summary
-and Setup</a> to install all the necessary packages for this workshop.
-If you have to install, remember to re-run the <code>library</code>
-commands above to load them.</p>
-</section><section><h2 class="section-heading" id="load-data">Load data<a class="anchor" aria-label="anchor" href="#load-data"></a>
+<p><code>there is no package called 'XXXX'</code>というエラーメッセージが表示された場合、これはこのバージョンのRに対して、パッケージがまだインストールされていないことを意味します。このワークショップに必要なすべてのパッケージをインストールするには、<a href="https://carpentries-incubator.github.io/bioc-rnaseq/index.html" class="external-link">Summary
+and Setup</a>の下部を参照してください。
+インストールする必要がある場合は、上記の<code>library</code>コマンドを再実行してそれらを読み込むことを忘れないでください。</p>
+</section><section><h2 class="section-heading" id="データを読み込む">データを読み込む<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"></a>
 </h2>
 <hr class="half-width">
-<p>In the last episode, we used R to download 4 files from the internet
-and saved them on our computer. But we do not have these files loaded
-into R yet so that we can work with them. The original experimental
-design in <a href="https://pubmed.ncbi.nlm.nih.gov/28696309/" class="external-link">Blackmore
-et al. 2017</a> was fairly complex: 8 week old male and female C57BL/6
-mice were collected at Day 0 (before influenza infection), Day 4 and Day
-8 after influenza infection. From each mouse, cerebellum and spinal cord
-tissues were taken for RNA-seq. There were originally 4 mice per ‘Sex x
-Time x Tissue’ group, but a few were lost along the way resulting in a
-total of 45 samples. For this workshop, we are going to simplify the
-analysis by only using the 22 cerebellum samples. Expression
-quantification was done using STAR to align to the mouse genome and then
-counting reads that map to genes. In addition to the counts per gene per
-sample, we also need information on which sample belongs to which
-Sex/Time point/Replicate. And for the genes, it is helpful to have extra
-information called annotation. Let’s read in the data files that we
-downloaded in the last episode and start to explore them:</p>
+<p>前回のエピソードでは、Rを使用してインターネットから4つのファイルをダウンロードし、それらをコンピュータに保存しました。
+しかし、これらのファイルはまだRに読み込まれていないため、作業することができません。
+<a href="https://pubmed.ncbi.nlm.nih.gov/28696309/" class="external-link">Blackmore et
+al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢のオスとメスのC57BL/6マウスは、インフルエンザ感染前の0日目、感染後の4日目および8日目に収集されました。
+各マウスからは、小脳と脊髄の組織がRNA-seq用に取り出されました。
+元々は「性別 x 時間 x
+組織」群御に4匹のマウスがいましたが、途中でいくつかが失われ、合計で45のサンプルに至りました。
+このワークショップでは、分析を簡素化するために22の小脳サンプルのみを使用します。
+発現の定量化は、STARを使用してマウスのゲノムにアライメントを行い、その後、遺伝子にマッピングされるリードの数を数えることを通じて行われました。
+各遺伝子ごとのサンプルあたりのカウントに加えて、どのサンプルがどの性別/時間点/複製に属するかの情報も必要です。
+遺伝子に関しては、注釈と呼ばれる追加の情報があると便利です。
+前回ダウンロードしたデータファイルを読み込み、探索し始めましょう：</p>
 <div class="section level3">
-<h3 id="counts">Counts<a class="anchor" aria-label="anchor" href="#counts"></a>
+<h3 id="カウント">カウント<a class="anchor" aria-label="anchor" href="#%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88"></a>
 </h3>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -856,22 +910,17 @@ downloaded in the last episode and start to explore them:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># View(counts)</span></span></code></pre>
 </div>
-<p>Genes are in rows and samples are in columns, so we have counts for
-41,786 genes and 22 samples. The <code>View()</code> command has been
-commented out for the website, but running it will open a tab in RStudio
-that lets us look at the data and even sort the table by a particular
-column. However, the viewer cannot change the data inside the
-<code>counts</code> object, so we can only look, not permanently sort
-nor edit the entries. When finished, close the viewer using the X in the
-tab. Looks like the rownames are gene symbols and the column names are
-the GEO sample IDs, which are not very informative for telling us which
-sample is what.</p>
+<p>遺伝子は行に、サンプルは列に含まれています。したがって、41,786の遺伝子と22のサンプルのカウントがあります。
+<code>View()</code>コマンドはウェブサイト用にコメントアウトされていますが、実行するとRStudioでデータを確認したり、特定の列でテーブルを並べ替えたりできます。
+ただし、ビューワは<code>counts</code>オブジェクト内部のデータを変更できないため、見るだけで、永久に並べ替えたり編集したりすることはできません。
+終了したら、タブのXを使ってビューワを閉じます。
+行名は遺伝子シンボルであり、列名はGEOのサンプルIDであるようです。これは、私たちがどのサンプルが何かを教えてくれないため、あまり有益ではありません。</p>
 </div>
 <div class="section level3">
-<h3 id="sample-annotations">Sample annotations<a class="anchor" aria-label="anchor" href="#sample-annotations"></a>
+<h3 id="サンプルの注釈">サンプルの注釈<a class="anchor" aria-label="anchor" href="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AE%E6%B3%A8%E9%87%88"></a>
 </h3>
-<p>Next read in the sample annotations. Because samples are in columns
-in the count matrix, we will name the object <code>coldata</code>:</p>
+<p>次に、サンプルの注釈を読み込みます。
+カウント行列の列にはサンプルが含まれているため、オブジェクトに<code>coldata</code>という名前を付けます：</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -891,36 +940,21 @@ in the count matrix, we will name the object <code>coldata</code>:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># View(coldata)</span></span></code></pre>
 </div>
-<p>Now samples are in rows with the GEO sample IDs as the rownames, and
-we have 10 columns of information. The columns that are the most useful
-for this workshop are <code>geo_accession</code> (GEO sample IDs again),
-<code>sex</code> and <code>time</code>.</p>
+<p>今、サンプルが行にあり、GEOサンプルIDが行名として付いています。そして、私たちには10列の情報があります。
+このワークショップで最も便利な列は、<code>geo_accession</code>（再度、GEOサンプルID）、<code>sex</code>、および<code>time</code>です。</p>
 </div>
 <div class="section level3">
-<h3 id="gene-annotations">Gene annotations<a class="anchor" aria-label="anchor" href="#gene-annotations"></a>
+<h3 id="遺伝子の注釈">遺伝子の注釈<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E3%81%AE%E6%B3%A8%E9%87%88"></a>
 </h3>
-<p>The counts only have gene symbols, which while short and somewhat
-recognizable to the human brain, are not always good absolute
-identifiers for exactly what gene was measured. For this we need
-additional gene annotations that were provided by the authors. The
-<code>count</code> and <code>coldata</code> files were in comma
-separated value (.csv) format, but we cannot use that for our gene
-annotation file because the descriptions can contain commas that would
-prevent a .csv file from being read in correctly. Instead the gene
-annotation file is in tab separated value (.tsv) format. Likewise, the
-descriptions can contain the single quote <code>'</code> (e.g., 5’),
-which by default R assumes indicates a character entry. So we have to
-use a more generic function <code>read.delim()</code> with extra
-arguments to specify that we have tab-separated data
-(<code>sep = "\t"</code>) with no quotes used (<code>quote = ""</code>).
-We also put in other arguments to specify that the first row contains
-our column names (<code>header = TRUE</code>), the gene symbols that
-should be our <code>row.names</code> are in the 5th column
-(<code>row.names = 5</code>), and that NCBI’s species-specific gene ID
-(i.e., ENTREZID) should be read in as character data even though they
-look like numbers (<code>colClasses</code> argument). You can look up
-this details on available arguments by simply entering the function name
-starting with question mark. (e.g., <code>?read.delim</code>)</p>
+<p>カウントには遺伝子シンボルしかありませんが、それは短くて人間の脳にとってはある程度認識可能ですが、実際に測定された遺伝子の正確な同定子としてはあまり利便性がありません。
+そのため、著者によって提供された追加の遺伝子注釈が必要です。
+<code>count</code>および<code>coldata</code>ファイルはカンマ区切り値（.csv）形式でしたが、遺伝子注釈ファイルにはそれが使用できません。なぜなら、説明には、カンマを含む可能性があるため、.csvファイルを正しく読み込むのを妨げるからです。
+その代わりに、遺伝子注釈ファイルはタブ区切り値（.tsv）形式です。
+同様に、説明には単一引用符<code>'</code>（例：5’）が含まれる可能性があり、Rはデフォルトでこれを文字列として扱うためです。
+そのため、データがタブ区切りであることを指定するために、より一般的な関数<code>read.delim()</code>に追加の引数を使用する必要があります（<code>sep = "\t"</code>）で、引用符は使用しない（<code>quote = ""</code>）。
+さらに、最初の行に列名が含まれていることを指定するためにその他の引数を追加し（<code>header = TRUE</code>）、行名として指定される遺伝子シンボルは5列目（<code>row.names = 5</code>）であること、NCBIの種特異的遺伝子ID（すなわちENTREZID）は、数字のように見えるが文字列として読み込む（<code>colClasses</code>引数）必要があることを指定します。
+使用可能な引数に関する詳細については、関数名の先頭にクエスチョンマークを入力することで確認できます。
+(例：<code>?read.delim</code>)</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -944,14 +978,9 @@ starting with question mark. (e.g., <code>?read.delim</code>)</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># View(rowranges)</span></span></code></pre>
 </div>
-<p>For each of the 41,786 genes, we have the <code>seqnames</code>
-(e.g., chromosome number), <code>start</code> and <code>end</code>
-positions, <code>strand</code>, <code>ENTREZID</code>, gene product
-description (<code>product</code>) and the feature type
-(<code>gbkey</code>). These gene-level metadata are useful for the
-downstream analysis. For example, from the <code>gbkey</code> column, we
-can check what types of genes and how many of them are in our
-dataset:</p>
+<p>41,786の遺伝子ごとに、<code>seqnames</code>（例えば、染色体数）、<code>start</code>および<code>end</code>位置、<code>strand</code>、<code>ENTREZID</code>、遺伝子産物説明（<code>product</code>）および特徴タイプ（<code>gbkey</code>）があります。
+これらの遺伝子レベルのメタデータは、下流分析に役立ちます。
+たとえば、<code>gbkey</code>列から、どのような種類の遺伝子があり、それらがデータセットにどのくらい含まれているかを確認できます：</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -969,21 +998,18 @@ dataset:</p>
     V_segment
           535 </code></pre>
 </div>
-<div id="challenge-discuss-the-following-points-with-your-neighbor" class="callout discussion">
+<div id="チャレンジ-以下のポイントを隣の人と話し合ってください" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="challenge-discuss-the-following-points-with-your-neighbor" class="callout-inner">
-<h3 class="callout-title">Challenge: Discuss the following points with your neighbor</h3>
+<div id="チャレンジ-以下のポイントを隣の人と話し合ってください" class="callout-inner">
+<h3 class="callout-title">チャレンジ: 以下のポイントを隣の人と話し合ってください。</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
-<li>How are the 3 objects <code>counts</code>, <code>coldata</code> and
-<code>rowranges</code> related to each other in terms of their rows and
-columns?</li>
-<li>If you only wanted to analyse the mRNA genes, what would you have to
-do keep just those (generally speaking, not exact codes)?</li>
-<li>If you decided the first two samples were outliers, what would you
-have to do to remove those (generally speaking, not exact codes)?</li>
+<li>
+<code>counts</code>、<code>coldata</code>、<code>rowranges</code>の3つのオブジェクトは、行および列に関してどのように関連していますか？</li>
+<li>mRNA遺伝子のみを分析したい場合、一般的にはどのようにしてそれらだけを保持しますか？（正確なコードではない）</li>
+<li>最初の2つのサンプルが外れ値であると印象付ける場合、それらを削除するにはどうすればよいですか？（一般的には、正確なコードではない）</li>
 </ol>
 </div>
 </div>
@@ -996,67 +1022,42 @@ have to do to remove those (generally speaking, not exact codes)?</li>
 <div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
-<li>In <code>counts</code>, the rows are genes just like the rows in
-<code>rowranges</code>. The columns in <code>counts</code> are the
-samples, but this corresponds to the rows in <code>coldata</code>.</li>
-<li>I would have to remember subset both the rows of <code>counts</code>
-and the rows of <code>rowranges</code> to just the mRNA genes.</li>
-<li>I would have to remember to subset both the columns of
-<code>counts</code> but the rows of <code>coldata</code> to exclude the
-first two samples.</li>
+<li>
+<code>counts</code>では、行は遺伝子であり、<code>rowranges</code>の行と同じです。
+<code>counts</code>の列はサンプルですが、これは<code>coldata</code>の行に対応します。</li>
+<li>
+<code>counts</code>の行をmRNA遺伝子に限定し、<code>rowranges</code>の行もそのようにしなければなりません。</li>
+<li>
+<code>counts</code>の列と<code>coldata</code>の行で、最初の2つのサンプルを除外するために両方の行をサブセットする必要があります。</li>
 </ol>
 </div>
 </div>
 </div>
 </div>
-<p>You can see how keeping related information in separate objects could
-easily lead to mis-matches between our counts, gene annotations and
-sample annotations. This is why Bioconductor has created a specialized
-S4 class called a <code>SummarizedExperiment</code>. The details of a
-<code>SummarizedExperiment</code> were covered extensively at the end of
-the <a href="https://carpentries-incubator.github.io/bioc-intro/60-next-steps.html#next-steps" class="external-link">Introduction
-to data analysis with R and Bioconductor</a> workshop. As a reminder,
-let’s take a look at the figure below representing the anatomy of the
-<code>SummarizedExperiment</code> class:</p>
-<figure><img src="https://uclouvain-cbio.github.io/WSBIM1322/figs/SE.svg" alt="Schematic showing the composition of a SummarizedExperiment object, with three assay matrices of equal dimension, rowData with feature annotations, colData with sample annotations, and a metadata list." width="80%" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>It is designed to hold any type of quantitative ’omics data
-(<code>assays</code>) along with linked sample annotations
-(<code>colData</code>) and feature annotations with
-(<code>rowRanges</code>) or without (<code>rowData</code>) chromosome,
-start and stop positions. Once these three tables are (correctly!)
-linked, subsetting either samples and/or features will correctly subset
-the <code>assay</code>, <code>colData</code> and <code>rowRanges</code>.
-Additionally, most Bioconductor packages are built around the same core
-data infrastructure so they will recognize and be able to manipulate
-<code>SummarizedExperiment</code> objects. Two of the most popular
-RNA-seq statistical analysis packages have their own extended S4 classes
-similar to a <code>SummarizedExperiment</code> with the additional slots
-for statistical results: <a href="https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#the-deseqdataset" class="external-link">DESeq2</a>’s
-<code>DESeqDataSet</code> and <a href="https://www.rdocumentation.org/packages/edgeR/versions/3.14.0/topics/DGEList-class" class="external-link">edgeR</a>’s
-<code>DGEList</code>. No matter which one you end up using for
-statistical analysis, you can start by putting your data in a
-<code>SummarizedExperiment</code>.</p>
+<p>関連情報を別のオブジェクトに保持することで、カウント、遺伝子の注釈、サンプルの注釈の間で不一致が発生する可能性があります。
+これが、Bioconductorが<code>SummarizedExperiment</code>という特殊なS4クラスを作成した理由です。
+<code>SummarizedExperiment</code>の詳細は、<a href="https://carpentries-incubator.github.io/bioc-intro/60-next-steps.html#next-steps" class="external-link">RNA解析とBioconductorの導入</a>ワークショップの最後で詳しく説明されています。
+リマインダーとして、<code>SummarizedExperiment</code>クラスの構造を表す図を見てみましょう：</p>
+<figure><img src="https://uclouvain-cbio.github.io/WSBIM1322/figs/SE.svg" alt="Schematic showing the composition of a SummarizedExperiment object, with three assay matrices of equal dimension, rowData with feature annotations, colData with sample annotations, and a metadata list." width="80%" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>これは、任意の種類の定量的なオミクスデータ（<code>assays</code>）と、それにリンクされたサンプル注釈（<code>colData</code>）、および（遺伝子）特徴注釈（<code>rowRanges</code>）または染色体、開始および終了位置を持たない（<code>rowData</code>）形式で保持されるように設計されています。
+これらの3つのテーブルが（正しく）リンクされると、サンプルや特徴の部分集合が<code>assay</code>、<code>colData</code>、<code>rowRanges</code>の正しい部分集合に変わります。
+さらに、ほとんどのBioconductorパッケージは同じコアデータインフラストラクチャに基づいて構築されているため、<code>SummarizedExperiment</code>オブジェクトを認識し、操作することができます。
+さらに、ほとんどのBioconductorパッケージは同じコアデータインフラストラクチャの周りに構築されているため、<code>SummarizedExperiment</code>オブジェクトを認識し、操作できるようになります。
+最も人気のある2つのRNA-seq統計分析パッケージは、統計結果用に追加のスロットがある<code>SummarizedExperiment</code>に類似した独自の拡張S4クラスを持っています：<a href="https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#the-deseqdataset" class="external-link">DESeq2</a>の<code>DESeqDataSet</code>および<a href="https://www.rdocumentation.org/packages/edgeR/versions/3.14.0/topics/DGEList-class" class="external-link">edgeR</a>の<code>DGEList</code>です。
+統計分析に使用するものが何であれ、データを<code>SummarizedExperiment</code>に入れることから始めることができます。</p>
 </div>
-</section><section><h2 class="section-heading" id="assemble-summarizedexperiment">Assemble SummarizedExperiment<a class="anchor" aria-label="anchor" href="#assemble-summarizedexperiment"></a>
+</section><section><h2 class="section-heading" id="summarizedexperimentを組み立てる">SummarizedExperimentを組み立てる<a class="anchor" aria-label="anchor" href="#summarizedexperiment%E3%82%92%E7%B5%84%E3%81%BF%E7%AB%8B%E3%81%A6%E3%82%8B"></a>
 </h2>
 <hr class="half-width">
-<p>We will create a <code>SummarizedExperiment</code> from these
-objects:</p>
+<p>これらのオブジェクトから<code>SummarizedExperiment</code>を作成します。</p>
 <ul>
-<li>The <code>count</code> object will be saved in <code>assays</code>
-slot</li>
-<li>The <code>coldata</code> object with sample information will be
-stored in <code>colData</code> slot (<em><strong>sample
-metadata</strong></em>)</li>
-<li>The <code>rowranges</code> object describing the genes will be
-stored in <code>rowRanges</code> slot (<em><strong>features
-metadata</strong></em>)</li>
+<li>
+<code>count</code>オブジェクトは<code>assays</code>スロットに保存されます。</li>
+<li>サンプル情報を持つ<code>coldata</code>オブジェクトは、<code>colData</code>スロットに保存されます（<em><strong>サンプルメタデータ</strong></em>）</li>
+<li>遺伝子を記述する<code>rowranges</code>オブジェクトは、<code>rowRanges</code>スロットに保存されます（<em><strong>特徴メタデータ</strong></em>）</li>
 </ul>
-<p>Before we put them together, you ABSOLUTELY MUST MAKE SURE THE
-SAMPLES AND GENES ARE IN THE SAME ORDER! Even though we saw that
-<code>count</code> and <code>coldata</code> had the same number of
-samples and <code>count</code> and <code>rowranges</code> had the same
-number of genes, we never explicitly checked to see if they were in the
-same order. One quick way to check:</p>
+<p>それらを組み合わせる前に、サンプルと遺伝子が同じ順序であることを絶対に確認する必要があります！
+<code>count</code>と<code>coldata</code>が同じ数のサンプルを持っていること、また<code>count</code>と<code>rowranges</code>が同じ数の遺伝子を持っていることはわかりましたが、同じ順序になっているかどうかを明示的に確認することはしていませんでした。
+確認する簡単な方法：</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1083,14 +1084,12 @@ same order. One quick way to check:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># If the first is not TRUE, you can match up the samples/columns in</span></span>
-<span><span class="co"># counts with the samples/rows in coldata like this (which is fine</span></span>
-<span><span class="co"># to run even if the first was TRUE):</span></span>
+<code class="sourceCode R"><span><span class="co"># 最初がTRUEでない場合は、このようにしてカウントのサンプル/列をコレクトします（これは最初がTRUEでも実行しても構いません）：</span></span>
 <span></span>
 <span><span class="va">tempindex</span> <span class="op">&lt;-</span> <span class="fu">match</span><span class="op">(</span><span class="fu">colnames</span><span class="op">(</span><span class="va">counts</span><span class="op">)</span>, <span class="fu">rownames</span><span class="op">(</span><span class="va">coldata</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">coldata</span> <span class="op">&lt;-</span> <span class="va">coldata</span><span class="op">[</span><span class="va">tempindex</span>, <span class="op">]</span></span>
 <span></span>
-<span><span class="co"># Check again:</span></span>
+<span><span class="co"># 再確認します:</span></span>
 <span><span class="fu">all.equal</span><span class="op">(</span><span class="fu">colnames</span><span class="op">(</span><span class="va">counts</span><span class="op">)</span>, <span class="fu">rownames</span><span class="op">(</span><span class="va">coldata</span><span class="op">)</span><span class="op">)</span> </span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1105,10 +1104,8 @@ same order. One quick way to check:</p>
 <div class="callout-inner">
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<p>If the features (i.e., genes) in the assay (e.g.,
-<code>counts</code>) and the gene annotation table (e.g.,
-<code>rowranges</code>) are different, how can we fix them? Write the
-codes.</p>
+<p>アッセイ（例：<code>counts</code>）および遺伝子注釈テーブル（例：<code>rowranges</code>）内の特徴（すなわち遺伝子）が異なる場合、これらをどのように修正できますか？
+コードを記述してください。</p>
 </div>
 </div>
 </div>
@@ -1132,13 +1129,12 @@ codes.</p>
 </div>
 </div>
 </div>
-<p>Once we have verified that samples and genes are in the same order,
-we can then create our <code>SummarizedExperiment</code> object.</p>
+<p>サンプルと遺伝子が同じ順序になっていることを確認したら、<code>SummarizedExperiment</code>オブジェクトを作成します。</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># One final check:</span></span>
+<code class="sourceCode R"><span><span class="co"># 最後の確認:</span></span>
 <span><span class="fu">stopifnot</span><span class="op">(</span><span class="fu">rownames</span><span class="op">(</span><span class="va">rowranges</span><span class="op">)</span> <span class="op">==</span> <span class="fu">rownames</span><span class="op">(</span><span class="va">counts</span><span class="op">)</span>, <span class="co"># features</span></span>
 <span>          <span class="fu">rownames</span><span class="op">(</span><span class="va">coldata</span><span class="op">)</span> <span class="op">==</span> <span class="fu">colnames</span><span class="op">(</span><span class="va">counts</span><span class="op">)</span><span class="op">)</span> <span class="co"># samples</span></span>
 <span></span>
@@ -1148,15 +1144,13 @@ we can then create our <code>SummarizedExperiment</code> object.</p>
 <span>    colData <span class="op">=</span> <span class="va">coldata</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<p>Because matching the genes and samples is so important, the
-<code>SummarizedExperiment()</code> constructor does some internal check
-to make sure they contain the same number of genes/samples and the
-sample/row names match. If not, you will get some error messages:</p>
+<p>遺伝子とサンプルが一致していることが非常に重要であるため、<code>SummarizedExperiment()</code>コンストラクタは内部で一致する遺伝子/サンプル数とサンプル/行名が一致することをチェックします。
+そうでない場合、いくつかのエラーメッセージが表示されます：</p>
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># wrong number of samples:</span></span>
+<code class="sourceCode R"><span><span class="co"># サンプル数の誤り:</span></span>
 <span></span>
 <span><span class="va">bad1</span> <span class="op">&lt;-</span> <span class="fu">SummarizedExperiment</span><span class="op">(</span></span>
 <span>    assays <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>counts <span class="op">=</span> <span class="fu">as.matrix</span><span class="op">(</span><span class="va">counts</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -1174,7 +1168,7 @@ sample/row names match. If not, you will get some error messages:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># same number of genes but in different order:</span></span>
+<code class="sourceCode R"><span><span class="co"># 同じ数の遺伝子ですが異なる順序:</span></span>
 <span></span>
 <span><span class="va">bad2</span> <span class="op">&lt;-</span> <span class="fu">SummarizedExperiment</span><span class="op">(</span></span>
 <span>  assays <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>counts <span class="op">=</span> <span class="fu">as.matrix</span><span class="op">(</span><span class="va">counts</span><span class="op">)</span><span class="op">)</span>,</span>
@@ -1189,14 +1183,12 @@ sample/row names match. If not, you will get some error messages:</p>
   to those of the RangedSummarizedExperiment object (or derivative) to
   construct</code></pre>
 </div>
-<p>A brief recap of how to access the various data slots in a
-<code>SummarizedExperiment</code> and how to make some
-manipulations:</p>
+<p><code>SummarizedExperiment</code>のさまざまなデータスロットにアクセスする方法と、いくつかの操作を行う方法の簡単な概要：</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Access the counts</span></span>
+<code class="sourceCode R"><span><span class="co"># カウントにアクセス</span></span>
 <span><span class="fu">head</span><span class="op">(</span><span class="fu">assay</span><span class="op">(</span><span class="va">se</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1246,9 +1238,9 @@ Sox17               273        197        310        246</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># The above works now because we only have one assay, "counts"</span></span>
-<span><span class="co"># But if there were more than one assay, we would have to specify</span></span>
-<span><span class="co"># which one like so:</span></span>
+<code class="sourceCode R"><span><span class="co"># 上記は、私たちが今持っているのが1つのアッセイ、"counts"のために機能しています。</span></span>
+<span><span class="co"># しかし、アッセイが複数ある場合は、指定する必要があります。</span></span>
+<span><span class="co"># 例えば、</span></span>
 <span></span>
 <span><span class="fu">head</span><span class="op">(</span><span class="fu">assay</span><span class="op">(</span><span class="va">se</span>, <span class="st">"counts"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1288,7 +1280,7 @@ Sox17               273        197        310        246</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Access the sample annotations</span></span>
+<code class="sourceCode R"><span><span class="co"># サンプル注釈にアクセス</span></span>
 <span><span class="fu">colData</span><span class="op">(</span><span class="va">se</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1337,7 +1329,7 @@ GSM2545380  InfluenzaA     C57BL/6        Day8  Cerebellum        19</code></pre
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Access the gene annotations</span></span>
+<code class="sourceCode R"><span><span class="co"># 遺伝子注釈にアクセス</span></span>
 <span><span class="fu">head</span><span class="op">(</span><span class="fu">rowData</span><span class="op">(</span><span class="va">se</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1368,7 +1360,7 @@ Sox17              20671 SRY (sex determining..        mRNA</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Make better sample IDs that show sex, time and mouse ID:</span></span>
+<code class="sourceCode R"><span><span class="co"># 性別、時間、マウスIDを表示するためのより良いサンプルIDを作成します：</span></span>
 <span></span>
 <span><span class="va">se</span><span class="op">$</span><span class="va">Label</span> <span class="op">&lt;-</span> <span class="fu">paste</span><span class="op">(</span><span class="va">se</span><span class="op">$</span><span class="va">sex</span>, <span class="va">se</span><span class="op">$</span><span class="va">time</span>, <span class="va">se</span><span class="op">$</span><span class="va">mouse</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
 <span><span class="va">se</span><span class="op">$</span><span class="va">Label</span></span></code></pre>
@@ -1389,7 +1381,7 @@ Sox17              20671 SRY (sex determining..        mRNA</code></pre>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">colnames</span><span class="op">(</span><span class="va">se</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">se</span><span class="op">$</span><span class="va">Label</span></span>
 <span></span>
-<span><span class="co"># Our samples are not in order based on sex and time</span></span>
+<span><span class="co"># サンプルは性別と時間に基づいて並んでいません。</span></span>
 <span><span class="va">se</span><span class="op">$</span><span class="va">Group</span> <span class="op">&lt;-</span> <span class="fu">paste</span><span class="op">(</span><span class="va">se</span><span class="op">$</span><span class="va">sex</span>, <span class="va">se</span><span class="op">$</span><span class="va">time</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span></span>
 <span><span class="va">se</span><span class="op">$</span><span class="va">Group</span></span></code></pre>
 </div>
@@ -1406,8 +1398,7 @@ Sox17              20671 SRY (sex determining..        mRNA</code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># change this to factor data with the levels in order </span></span>
-<span><span class="co"># that we want, then rearrange the se object:</span></span>
+<code class="sourceCode R"><span><span class="co"># これを順序を保持するファクターデータに変更し、seオブジェクトを再配置します：</span></span>
 <span></span>
 <span><span class="va">se</span><span class="op">$</span><span class="va">Group</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="va">se</span><span class="op">$</span><span class="va">Group</span>, levels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"Female_Day0"</span>,<span class="st">"Male_Day0"</span>, </span>
 <span>                                        <span class="st">"Female_Day4"</span>,<span class="st">"Male_Day4"</span>,</span>
@@ -1463,7 +1454,7 @@ Male_Day8_24          24   Male_Day8_24 Male_Day8  </code></pre>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Finally, also factor the Label column to keep in order in plots:</span></span>
+<code class="sourceCode R"><span><span class="co"># 最後に、プロット内での順序を維持するためにLabel列もファクタにします:</span></span>
 <span></span>
 <span><span class="va">se</span><span class="op">$</span><span class="va">Label</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="va">se</span><span class="op">$</span><span class="va">Label</span>, levels <span class="op">=</span> <span class="va">se</span><span class="op">$</span><span class="va">Label</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1475,17 +1466,12 @@ Male_Day8_24          24   Male_Day8_24 Male_Day8  </code></pre>
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
-<li>How many samples are there for each level of the
-<code>Infection</code> variable?</li>
-<li>Create 2 objects named <code>se_infected</code> and
-<code>se_noninfected</code> containing a subset of <code>se</code> with
-only infected and non-infected samples, respectively. Then, calculate
-the mean expression levels of the first 500 genes for each object, and
-use the <code>summary()</code> function to explore the distribution of
-expression levels for infected and non-infected samples based on these
-genes.</li>
-<li>How many samples represent female mice infected with Influenza A on
-day 8?</li>
+<li>
+<code>Infection</code>変数の各レベルに対して、サンプルは何個ですか？</li>
+<li>
+<code>se_infected</code>と<code>se_noninfected</code>という名前の2つのオブジェクトを作成し、それぞれに感染サンプルと非感染サンプルのみを含む<code>se</code>のサブセットを含めます。
+その後、最初の500遺伝子の各オブジェクトの平均発現レベルを計算し、<code>summary()</code>関数を使用してこれらの遺伝子に基づく感染と非感染サンプルの発現レベルの分布を調べます。</li>
+<li>インフルエンザAに感染した雌のマウスのサンプルは何個ありますか？</li>
 </ol>
 </div>
 </div>
@@ -1558,63 +1544,44 @@ day 8?</li>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="save-summarizedexperiment">Save SummarizedExperiment<a class="anchor" aria-label="anchor" href="#save-summarizedexperiment"></a>
+</section><section><h2 class="section-heading" id="summarizedexperimentを保存する">SummarizedExperimentを保存する<a class="anchor" aria-label="anchor" href="#summarizedexperiment%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%99%E3%82%8B"></a>
 </h2>
 <hr class="half-width">
-<p>This was a bit of code and time to create our
-<code>SummarizedExperiment</code> object. We will need to keep using it
-throughout the workshop, so it can be useful to save it as an actual
-single file on our computer to read it back in to R’s memory if we have
-to shut down RStudio. To save an R-specific file we can use the
-<code>saveRDS()</code> function and later read it back into R using the
-<code>readRDS()</code> function.</p>
+<p>これが、私たちの<code>SummarizedExperiment</code>オブジェクトを作成するための少しのコードと時間でした。
+ワークショップ全体で使用し続ける必要があるため、Rのメモリに戻すためにコンピュータ上の実際の単一ファイルとして保存することが有用です。
+Rに特有のファイルを保存するには、<code>saveRDS()</code>関数を使用し、後で<code>readRDS()</code>関数を使用して再び読み込むことができます。</p>
 <div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">saveRDS</span><span class="op">(</span><span class="va">se</span>, <span class="st">"data/GSE96870_se.rds"</span><span class="op">)</span></span>
-<span><span class="fu">rm</span><span class="op">(</span><span class="va">se</span><span class="op">)</span> <span class="co"># remove the object!</span></span>
+<span><span class="fu">rm</span><span class="op">(</span><span class="va">se</span><span class="op">)</span> <span class="co"># オブジェクトを削除！</span></span>
 <span><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu">readRDS</span><span class="op">(</span><span class="st">"data/GSE96870_se.rds"</span><span class="op">)</span></span></code></pre>
 </div>
-</section><section><h2 class="section-heading" id="data-provenance-and-reproducibility">Data provenance and reproducibility<a class="anchor" aria-label="anchor" href="#data-provenance-and-reproducibility"></a>
+</section><section><h2 class="section-heading" id="データの由来と再現性">データの由来と再現性<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%94%B1%E6%9D%A5%E3%81%A8%E5%86%8D%E7%8F%BE%E6%80%A7"></a>
 </h2>
 <hr class="half-width">
-<p>We have now created an external .rds file that represents our RNA-Seq
-data in a format that can be read into R and used by various packages
-for our analyses. But we should still keep a record of the codes that
-created the .rds file from the 3 files we downloaded from the internet.
-But what is the provenance of those files - i.e, where did they come
-from and how were they made? The original counts and gene information
-were deposited in the GEO public database, accession number <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE96870" class="external-link">GSE96870</a>.
-But these counts were generated by running alignment/quantification
-programs on the also-deposited fastq files that hold the sequence base
-calls and quality scores, which in turn were generated by a specific
-sequencing machine using some library preparation method on RNA
-extracted from samples collected in a particular experiment. Whew!</p>
-<p>If you conducted the original experiment ideally you would have the
-complete record of where and how the data were generated. But you might
-use publicly-available data sets so the best you can do is to keep track
-of what original files you got from where and what manipulations you
-have done to them. Using R codes to keep track of everything is an
-excellent way to be able to reproduce the entire analysis from the
-original input files. The exact results you get can differ depending on
-the R version, add-on package versions and even what operating system
-you use, so make sure to keep track of all this information as well by
-running <code>sessionInfo()</code> and recording the output (see example
-at end of lesson).</p>
-<div id="challenge-how-to-subset-to-mrna-genes" class="callout discussion">
+<p>これで、RNA-SeqデータをRにインポートしてさまざまなパッケージによる分析で使用可能な形式の外部.rdsファイルを作成しました。
+ただし、インターネットからダウンロードした3つのファイルから.rdsファイルを作成するために使用したコードの記録を保持する必要があります。
+ファイルの由来はどうなっていますか？
+つまり、それらはどこから来ており、どのように作成されたのですか？
+元々のカウントおよび遺伝子情報は、GEO公開データベースに預けられました。アクセッション番号は<a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE96870" class="external-link">GSE96870</a>です。
+ただし、これらのカウントは、配列ベースコールや品質スコアを保持するファストqファイルで配列合わせ/定量化プログラムを実行することによって生成されたものであり、これらは特定のライブラリ調製法を使用して抽出されたRNAから収集したサンプルで生成されたものです。
+ふぅ！</p>
+<p>元の実験を実施した場合、理想的にはデータが生成された場所と方法の完全な記録を持つべきです。
+しかし、公開データセットを利用している場合、最善の方法は、どの元のファイルがどこから来たか、そしてそれに対して行ってきた操作の記録を保持することです。
+Rコードを使用してすべてを追跡することは、元の入力ファイルから全体の分析を再現可能にする素晴らしい方法です。
+得られる正確な結果は、Rのバージョン、アドオンパッケージのバージョン、さらには使用しているオペレーティングシステムによって異なる可能性があるため、<code>sessionInfo()</code>を使用してすべての情報を追跡し、出力を記録するようにしてください（レッスンの最後に例を参照）。</p>
+<div id="チャレンジ-mrna遺伝子をサブセットにする方法" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
-<div id="challenge-how-to-subset-to-mrna-genes" class="callout-inner">
-<h3 class="callout-title">Challenge: How to subset to mRNA genes</h3>
+<div id="チャレンジ-mrna遺伝子をサブセットにする方法" class="callout-inner">
+<h3 class="callout-title">チャレンジ: mRNA遺伝子をサブセットにする方法</h3>
 <div class="callout-content">
-<p>Before, we conceptually discussed subsetting to only the mRNA genes.
-Now that we have our <code>SummarizedExperiment</code> object, it
-becomes much easier to write the codes to subset <code>se</code> to a
-new object called <code>se_mRNA</code> that contains only the genes/rows
-where the <code>rowData(se)$gbkey</code> is equal to mRNA. Write the
-codes and then check you correctly got the 21,198 mRNA genes:</p>
+<p>以前は、mRNA遺伝子に対するサブセットを理論的に論じました。
+現在、<code>SummarizedExperiment</code>オブジェクトを持っているため、<code>se</code>を新しいオブジェクト<code>se_mRNA</code>にサブセットするためのコードを書くことがはるかに簡単になります。このオブジェクトには、<code>rowData(se)$gbkey</code>がmRNAである遺伝子/行のみを含むものです。
+コードを書くと、21,198のmRNA遺伝子を正しく取得したかを確認してください。</p>
 </div>
 </div>
 </div>
@@ -1641,40 +1608,30 @@ codes and then check you correctly got the 21,198 mRNA genes:</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="gene-annotations-1">Gene Annotations<a class="anchor" aria-label="anchor" href="#gene-annotations-1"></a>
+</section><section><h2 class="section-heading" id="遺伝子注釈">遺伝子注釈<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E6%B3%A8%E9%87%88"></a>
 </h2>
 <hr class="half-width">
-<p>Depending on who generates your count data, you might not have a nice
-file of additional gene annotations. There may only be the count row
-names, which could be gene symbols or ENTREZIDs or another database’s
-ID. Characteristics of gene annotations differ based on their annotation
-strategies and information sources. For example, RefSeq human gene
-models (i.e., Entrez from NCBI) are well supported and broadly used in
-various studies. The UCSC Known Genes dataset is based on protein data
-from Swiss-Prot/TrEMBL (UniProt) and the associated mRNA data from
-GenBank, and serves as a foundation for the UCSC Genome Browser. Ensembl
-genes contain both automated genome annotation and manual curation.</p>
-<p>You can find more information in Bioconductor <a href="https://jmacdon.github.io/Bioc2022Anno/articles/AnnotationWorkshop.html" class="external-link">Annotation
-Workshop</a> material.</p>
-<p>Bioconductor has many packages and functions that can help you to get
-additional annotation information for your genes. The available
-resources are covered in more detail in <a href="https://carpentries-incubator.github.io/bioc-rnaseq/07-gene-set-analysis.html#gene-set-resources" class="external-link">Episode
-7 Gene set enrichment analysis</a>.</p>
-<p>Here, we will introduce one of the gene ID mapping functions,
-<code>mapIds</code>:</p>
+<p>カウントデータを生成する人によっては、追加の遺伝子注釈の適切なファイルがないかもしれません。
+遺伝子シンボルやENTREZID、あるいは他のデータベースのIDのみが存在するかもしれません。
+遺伝子注釈の特性は、その注釈戦略と情報源によって異なります。
+たとえば、RefSeqヒト遺伝子モデル（つまり、NCBIのEntrez）は、さまざまな研究でよくサポートされ、広く使用されています。
+UCSC Known Genes データセットは、Swiss-Prot/TrEMBL (UniProt)
+のタンパク質データと、GenBankからの関連するmRNAデータに基づいており、UCSC
+Genome Browserの基盤として機能します。
+Ensemblの遺伝子は、自動生成されたゲノムアノテーションと手動キュレーションの両方を含んでいます。</p>
+<p>Bioconductorでの詳細情報は、<a href="https://jmacdon.github.io/Bioc2022Anno/articles/AnnotationWorkshop.html" class="external-link">Annotation
+Workshop</a>の資料で見つけることができます。</p>
+<p>Bioconductorには、遺伝子の追加注釈情報を取得するための多くのパッケージや関数があります。
+利用可能なリソースについては、<a href="https://carpentries-incubator.github.io/bioc-rnaseq/07-gene-set-analysis.html#gene-set-resources" class="external-link">エピソード7
+遺伝子セット濃縮解析</a>で詳しく説明されています。</p>
+<p>ここでは、遺伝子IDマッピング関数の1つである<code>mapIds</code>を紹介します：</p>
 <pre><code><span><span class="fu">mapIds</span><span class="op">(</span><span class="va">annopkg</span>, <span class="va">keys</span>, <span class="va">column</span>, <span class="va">keytype</span>, <span class="va">...</span>, <span class="va">multiVals</span><span class="op">)</span></span></code></pre>
-<p>Where</p>
+<p>どこで</p>
 <ul>
-<li>
-<em>annopkg</em> is the annotation package</li>
-<li>
-<em>keys</em> are the IDs that we <strong>know</strong>
-</li>
-<li>
-<em>column</em> is the value we <strong>want</strong>
-</li>
-<li>
-<em>keytype</em> is the type of key used</li>
+<li>_annopkg_は、注釈パッケージです</li>
+<li>_keys_は、私たちが<strong>知っている</strong>IDです</li>
+<li>_column_は、私たちが<strong>望む</strong>値です</li>
+<li>_keytype_は、使用するキーのタイプです</li>
 </ul>
 <div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1693,12 +1650,8 @@ resources are covered in more detail in <a href="https://carpentries-incubator.g
 <pre class="output" tabindex="0"><code><span><span class="fl">497097</span></span>
 <span><span class="st">"Xkr4"</span> </span></code></pre>
 </div>
-<p>Different from the <code>select()</code> function,
-<code>mapIds()</code> function handles 1:many mapping between keys and
-columns through an additional argument, <code>multiVals</code>. The
-below example demonstrate this functionality using the
-<code>hgu95av2.db</code> package, an Affymetrix Human Genome U95 Set
-annotation data.</p>
+<p><code>select()</code>関数とは異なり、<code>mapIds()</code>関数は、追加の引数<code>multiVals</code>を通じてキーと列の間の1:多のマッピングを処理します。
+以下の例では、<code>hgu95av2.db</code>パッケージを使用してこの機能を示します。AffymetrixヒトゲノムU95セット注釈データ。</p>
 <div class="codewrapper sourceCode" id="cb61">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1723,9 +1676,7 @@ annotation data.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># When there is 1:many mapping, the default behavior was </span></span>
-<span><span class="co"># to output the first match. This can be changed to a function,</span></span>
-<span><span class="co"># which we defined above to give us the last match:</span></span>
+<code class="sourceCode R"><span><span class="co"># 1:多のマッピングがある場合、デフォルトの動作は最初の一致を出力することでした。これは、上で定義した関数を使用して最後の一致を取得するように変更できます：</span></span>
 <span></span>
 <span><span class="fu">mapIds</span><span class="op">(</span><span class="va">hgu95av2.db</span>, keys <span class="op">=</span> <span class="va">keys</span>, column <span class="op">=</span> <span class="st">"ALIAS"</span>, keytype <span class="op">=</span> <span class="st">"ENTREZID"</span>, multiVals <span class="op">=</span> <span class="va">last</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1744,7 +1695,7 @@ annotation data.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Or we can get back all the many mappings:</span></span>
+<code class="sourceCode R"><span><span class="co"># または、すべての多くのマッピングを取得することができます：</span></span>
 <span></span>
 <span><span class="fu">mapIds</span><span class="op">(</span><span class="va">hgu95av2.db</span>, keys <span class="op">=</span> <span class="va">keys</span>, column <span class="op">=</span> <span class="st">"ALIAS"</span>, keytype <span class="op">=</span> <span class="st">"ENTREZID"</span>, multiVals <span class="op">=</span> <span class="st">"list"</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1776,7 +1727,7 @@ $`100008586`
 $`10001`
 [1] "ARC33"     "NY-REN-28" "MED6"     </code></pre>
 </div>
-</section><section><h2 class="section-heading" id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
+</section><section><h2 class="section-heading" id="セッション情報">セッション情報<a class="anchor" aria-label="anchor" href="#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E6%83%85%E5%A0%B1"></a>
 </h2>
 <hr class="half-width">
 <div class="codewrapper sourceCode" id="cb70">
@@ -1840,13 +1791,10 @@ loaded via a namespace (and not attached):
 </div>
 <p>::: keypoints</p>
 <ul>
-<li>Depending on the gene expression quantification tool used, there are
-different ways (often distributed in Bioconductor packages) to read the
-output into a <code>SummarizedExperiment</code> or <code>DGEList</code>
-object for further processing in R.</li>
-<li>Stable gene identifiers such as Ensembl or Entrez IDs should
-preferably be used as the main identifiers throughout an RNA-seq
-analysis, with gene symbols added for easier interpretation. :::</li>
+<li>使用される遺伝子発現定量ツールによって、出力を<code>SummarizedExperiment</code>または<code>DGEList</code>オブジェクトに読み込む方法が異なります（多くはBioconductorパッケージで配布されています）。</li>
+<li>EnsemblやEntrez
+IDなどの安定した遺伝子識別子は、RNA-seq分析全体で主要な識別子として使用されるべきで、解釈を容易にするために遺伝子シンボルを追加する必要があります。
+:::</li>
 </ul></section></section><section id="aio-04-exploratory-qc"><p>Content from <a href="04-exploratory-qc.html">Exploratory analysis and quality control</a></p>
 <hr>
 <p> Last updated on 2025-07-24 |
@@ -2260,7 +2208,7 @@ suggest?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>The major signal in this data (37% variance) is associated with
@@ -2303,7 +2251,7 @@ class <code>DESeqTransform</code> as input. You can transform a
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5529,7 +5477,7 @@ convert a list to a two-column data frame?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
