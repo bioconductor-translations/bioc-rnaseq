@@ -492,9 +492,9 @@ microbenchmark(
 
 ``` output
 Unit: microseconds
-   expr     min       lq      mean   median      uq     max neval
- fisher 264.755 269.7735 281.90414 275.4040 287.707 489.133   100
-  hyper   1.543   1.7790   2.75299   2.4245   3.311  19.066   100
+   expr     min       lq      mean  median       uq     max neval
+ fisher 252.250 255.5115 265.65938 258.943 271.6915 473.093   100
+  hyper   1.553   1.8290   2.85375   3.091   3.4060  17.232   100
 ```
 
 It is very astonishing that `phyper()` is hundreds of times faster than
@@ -1167,7 +1167,7 @@ resTimeGO = enrichGO(gene = timeDEgenes,
 ```
 
 ``` output
---> Expected input gene ID: 16571,27401,16183,26934,15469,72544
+--> Expected input gene ID: 22376,30946,76781,16785,56708,22210
 ```
 
 ``` output
@@ -1411,19 +1411,19 @@ mmu00592                               alpha-Linolenic acid metabolism
 mmu04913                                       Ovarian steroidogenesis
 mmu04061 Viral protein interaction with cytokine and cytokine receptor
          GeneRatio  BgRatio RichFactor FoldEnrichment   zScore       pvalue
-mmu00590    16/456 89/10563  0.1797753       4.164400 6.367580 1.077074e-06
-mmu00591    12/456 55/10563  0.2181818       5.054067 6.402603 2.927526e-06
-mmu00565    11/456 48/10563  0.2291667       5.308525 6.354611 4.564725e-06
-mmu00592     8/456 25/10563  0.3200000       7.412632 6.818229 6.409913e-06
-mmu04913    12/456 65/10563  0.1846154       4.276518 5.628081 1.814940e-05
-mmu04061    14/456 95/10563  0.1473684       3.413712 5.019492 5.280890e-05
+mmu00590    16/456 89/10567  0.1797753       4.165977 6.369483 1.071769e-06
+mmu00591    12/456 55/10567  0.2181818       5.055981 6.404353 2.916153e-06
+mmu00565    11/456 49/10567  0.2244898       5.202157 6.261010 5.640144e-06
+mmu00592     8/456 25/10567  0.3200000       7.415439 6.819861 6.392124e-06
+mmu04913    12/456 65/10567  0.1846154       4.278138 5.629742 1.808160e-05
+mmu04061    14/456 95/10567  0.1473684       3.415005 5.021178 5.259449e-05
              p.adjust       qvalue
-mmu00590 0.0003392783 0.0002766380
-mmu00591 0.0004610853 0.0003759560
-mmu00565 0.0004792961 0.0003908045
-mmu00592 0.0005047807 0.0004115839
-mmu04913 0.0011434120 0.0009323059
-mmu04061 0.0027724672 0.0022605915
+mmu00590 0.0003376072 0.0002752754
+mmu00591 0.0004592941 0.0003744954
+mmu00565 0.0005033797 0.0004104416
+mmu00592 0.0005033797 0.0004104416
+mmu04913 0.0011391410 0.0009288234
+mmu04061 0.0027612106 0.0022514131
                                                                                                        geneID
 mmu00590 18783/19215/211429/329502/78390/19223/67103/242546/13118/18781/18784/11689/232889/15446/237625/11687
 mmu00591                        18783/211429/329502/78390/242546/18781/18784/13113/622127/232889/237625/11687
@@ -1612,14 +1612,14 @@ normally ignored in many analyses. In current tools, there are mainly
 following different universe settings:
 
 1. Using all genes in the genome, this also includes non-protein coding genes.
-  For human, the size of universe is 60k ~ 70k.
+   For human, the size of universe is 60k ~ 70k.
 2. Using all protein-coding genes. For human, the size of universe is ~ 20k.
 3. In the era of microarray, total genes that are measured on the chip is
-  taken as the universe. For RNASeq, since reads are aligned to all genes, we
-  can set a cutoff and only use those "expressed" genes as the universe.
+   taken as the universe. For RNASeq, since reads are aligned to all genes, we
+   can set a cutoff and only use those "expressed" genes as the universe.
 4. Using all genes in a gene sets collection. Then the size of the universe
-  depends on the size of the gene sets collection. For example GO gene sets
-  collection is much larger than the KEGG pathway gene sets collection.
+   depends on the size of the gene sets collection. For example GO gene sets
+   collection is much larger than the KEGG pathway gene sets collection.
 
 If the universe is set, DE genes as well as genes in the gene sets are first
 intersected to the universe. However, in general the universe affects three

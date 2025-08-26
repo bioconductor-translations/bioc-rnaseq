@@ -9,15 +9,15 @@ exercises: 45
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain the steps involved in a differential expression analysis.
-- Explain how to perform these steps in R, using DESeq2.
+ - Explain the steps involved in a differential expression analysis.
+ - Explain how to perform these steps in R, using DESeq2.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- What are the steps performed in a typical differential expression analysis?
-- How does one interpret the output of DESeq2?
+ - What are the steps performed in a typical differential expression analysis?
+ - How does one interpret the output of DESeq2?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -94,8 +94,8 @@ dds <- DESeqDataSetFromMatrix(countData = assays(se)$counts,
 
 `DESeq2` and `edgeR` make the following assumptions:
 
-- most genes are not differentially expressed
-- the probability of a read mapping to a specific gene is the same for all samples within the same group
+ - most genes are not differentially expressed
+ - the probability of a read mapping to a specific gene is the same for all samples within the same group
 
 As shown in the [previous section](../episodes/04-exploratory-qc.Rmd) on exploratory data analysis the total counts of a sample (even from the same condition) depends on the library size (total number of reads sequenced). To compare the variability of counts from a specific gene between and within groups we first need to account for library sizes and compositional effects.
 Recall the `estimateSizeFactors()` function from the previous section:
@@ -481,8 +481,8 @@ write.csv(temp, file = "output/Day8vsDay0.csv")
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- With DESeq2, the main steps of a differential expression analysis (size factor estimation, dispersion estimation, calculation of test statistics) are wrapped in a single function: DESeq().
-- Independent filtering of lowly expressed genes is often beneficial.
+ - With DESeq2, the main steps of a differential expression analysis (size factor estimation, dispersion estimation, calculation of test statistics) are wrapped in a single function: DESeq().
+ - Independent filtering of lowly expressed genes is often beneficial.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

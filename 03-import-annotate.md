@@ -509,7 +509,7 @@ se$Label <- factor(se$Label, levels = se$Label)
 
 1. `Infection`変数の各レベルに対して、サンプルは何個ですか？
 2. `se_infected`と`se_noninfected`という名前の2つのオブジェクトを作成し、それぞれに感染サンプルと非感染サンプルのみを含む`se`のサブセットを含めます。
-  その後、最初の500遺伝子の各オブジェクトの平均発現レベルを計算し、`summary()`関数を使用してこれらの遺伝子に基づく感染と非感染サンプルの発現レベルの分布を調べます。
+   その後、最初の500遺伝子の各オブジェクトの平均発現レベルを計算し、`summary()`関数を使用してこれらの遺伝子に基づく感染と非感染サンプルの発現レベルの分布を調べます。
 3. インフルエンザAに感染した雌のマウスのサンプルは何個ありますか？
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -739,14 +739,14 @@ other attached packages:
  [3] org.Mm.eg.db_3.21.0         AnnotationDbi_1.70.0       
  [5] SummarizedExperiment_1.38.1 Biobase_2.68.0             
  [7] MatrixGenerics_1.20.0       matrixStats_1.5.0          
- [9] GenomicRanges_1.60.0        GenomeInfoDb_1.44.0        
+ [9] GenomicRanges_1.60.0        GenomeInfoDb_1.44.1        
 [11] IRanges_2.42.0              S4Vectors_0.46.0           
 [13] BiocGenerics_0.54.0         generics_0.1.4             
 [15] knitr_1.50                 
 
 loaded via a namespace (and not attached):
- [1] renv_1.1.5              SparseArray_1.8.0       xml2_1.3.8             
- [4] RSQLite_2.4.1           lattice_0.22-7          tinkr_0.3.0            
+ [1] renv_1.1.5              SparseArray_1.8.1       xml2_1.4.0             
+ [4] RSQLite_2.4.2           lattice_0.22-7          tinkr_0.3.0            
  [7] magrittr_2.0.3          evaluate_1.0.4          grid_4.5.1             
 [10] fastmap_1.2.0           blob_1.2.4              jsonlite_2.0.0         
 [13] Matrix_1.7-3            processx_3.8.6          DBI_1.2.3              
@@ -756,7 +756,7 @@ loaded via a namespace (and not attached):
 [25] crayon_1.5.3            XVector_0.48.0          bit64_4.6.0-1          
 [28] cachem_1.1.0            withr_3.0.2             DelayedArray_0.34.1    
 [31] yaml_2.3.10             S4Arrays_1.8.1          tools_4.5.1            
-[34] sandpaper_0.16.13.9000  memoise_2.0.1           GenomeInfoDbData_1.2.14
+[34] sandpaper_0.17.1        memoise_2.0.1           GenomeInfoDbData_1.2.14
 [37] assertthat_0.2.1        png_0.1-8               vctrs_0.6.5            
 [40] R6_2.6.1                lifecycle_1.0.4         KEGGREST_1.48.1        
 [43] bit_4.6.0               pkgconfig_2.0.3         callr_3.7.6            

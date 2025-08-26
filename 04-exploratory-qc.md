@@ -446,7 +446,7 @@ other attached packages:
  [7] vsn_3.76.0                  DESeq2_1.48.1              
  [9] SummarizedExperiment_1.38.1 Biobase_2.68.0             
 [11] MatrixGenerics_1.20.0       matrixStats_1.5.0          
-[13] GenomicRanges_1.60.0        GenomeInfoDb_1.44.0        
+[13] GenomicRanges_1.60.0        GenomeInfoDb_1.44.1        
 [15] IRanges_2.42.0              S4Vectors_0.46.0           
 [17] BiocGenerics_0.54.0         generics_0.1.4             
 
@@ -462,24 +462,24 @@ loaded via a namespace (and not attached):
 [25] cachem_1.1.0            jsonlite_2.0.0          listviewer_4.0.0       
 [28] later_1.4.2             DelayedArray_0.34.1     BiocParallel_1.42.1    
 [31] parallel_4.5.1          cluster_2.1.8.1         R6_2.6.1               
-[34] bslib_0.9.0             limma_3.64.1            jquerylib_0.1.4        
-[37] Rcpp_1.0.14             assertthat_0.2.1        iterators_1.0.14       
+[34] bslib_0.9.0             limma_3.64.3            jquerylib_0.1.4        
+[37] Rcpp_1.1.0              assertthat_0.2.1        iterators_1.0.14       
 [40] knitr_1.50              splines_4.5.1           igraph_2.1.4           
 [43] httpuv_1.6.16           Matrix_1.7-3            tidyselect_1.2.1       
 [46] abind_1.4-8             yaml_2.3.10             doParallel_1.0.17      
 [49] codetools_0.2-20        affy_1.86.0             miniUI_0.1.2           
 [52] processx_3.8.6          lattice_0.22-7          tibble_3.3.0           
-[55] shiny_1.11.0            withr_3.0.2             evaluate_1.0.4         
-[58] sandpaper_0.16.13.9000  xml2_1.3.8              circlize_0.4.16        
-[61] pillar_1.10.2           affyio_1.78.0           BiocManager_1.30.26    
-[64] renv_1.1.4              DT_0.33                 foreach_1.5.2          
+[55] shiny_1.11.1            withr_3.0.2             evaluate_1.0.4         
+[58] sandpaper_0.17.1        xml2_1.4.0              circlize_0.4.16        
+[61] pillar_1.11.0           affyio_1.78.0           BiocManager_1.30.26    
+[64] renv_1.1.5              DT_0.33                 foreach_1.5.2          
 [67] shinyjs_2.1.0           scales_1.4.0            xtable_1.8-4           
 [70] glue_1.8.0              tools_4.5.1             colourpicker_1.3.0     
 [73] locfit_1.5-9.12         colorspace_2.1-1        nlme_3.1-168           
 [76] GenomeInfoDbData_1.2.14 tinkr_0.3.0             vipor_0.4.7            
 [79] cli_3.6.5               viridisLite_0.4.2       S4Arrays_1.8.1         
 [82] dplyr_1.1.4             gtable_0.3.6            rintrojs_0.3.4         
-[85] sass_0.4.10             digest_0.6.37           SparseArray_1.8.0      
+[85] sass_0.4.10             digest_0.6.37           SparseArray_1.8.1      
 [88] ggrepel_0.9.6           rjson_0.2.23            htmlwidgets_1.6.4      
 [91] farver_2.1.2            htmltools_0.5.8.1       lifecycle_1.0.4        
 [94] shinyWidgets_0.9.0      httr_1.4.7              GlobalOptions_0.1.2    
