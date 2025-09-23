@@ -747,7 +747,7 @@ other attached packages:
 loaded via a namespace (and not attached):
  [1] renv_1.1.5              SparseArray_1.8.1       xml2_1.4.0             
  [4] RSQLite_2.4.2           lattice_0.22-7          tinkr_0.3.0            
- [7] magrittr_2.0.3          evaluate_1.0.4          grid_4.5.1             
+ [7] magrittr_2.0.4          evaluate_1.0.4          grid_4.5.1             
 [10] fastmap_1.2.0           blob_1.2.4              jsonlite_2.0.0         
 [13] Matrix_1.7-3            processx_3.8.6          DBI_1.2.3              
 [16] ps_1.9.1                BiocManager_1.30.26     httr_1.4.7             
@@ -756,7 +756,7 @@ loaded via a namespace (and not attached):
 [25] crayon_1.5.3            XVector_0.48.0          bit64_4.6.0-1          
 [28] cachem_1.1.0            withr_3.0.2             DelayedArray_0.34.1    
 [31] yaml_2.3.10             S4Arrays_1.8.1          tools_4.5.1            
-[34] sandpaper_0.17.1        memoise_2.0.1           GenomeInfoDbData_1.2.14
+[34] sandpaper_0.17.2.9000   memoise_2.0.1           GenomeInfoDbData_1.2.14
 [37] assertthat_0.2.1        png_0.1-8               vctrs_0.6.5            
 [40] R6_2.6.1                lifecycle_1.0.4         KEGGREST_1.48.1        
 [43] bit_4.6.0               pkgconfig_2.0.3         callr_3.7.6            

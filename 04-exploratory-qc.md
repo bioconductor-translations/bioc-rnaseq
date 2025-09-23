@@ -451,7 +451,7 @@ other attached packages:
 [17] BiocGenerics_0.54.0         generics_0.1.4             
 
 loaded via a namespace (and not attached):
- [1] rlang_1.1.6             magrittr_2.0.3          shinydashboard_0.7.3   
+ [1] rlang_1.1.6             magrittr_2.0.4          shinydashboard_0.7.3   
  [4] clue_0.3-66             GetoptLong_1.0.5        pegboard_0.7.9         
  [7] compiler_4.5.1          mgcv_1.9-3              png_0.1-8              
 [10] callr_3.7.6             vctrs_0.6.5             pkgconfig_2.0.3        
@@ -470,7 +470,7 @@ loaded via a namespace (and not attached):
 [49] codetools_0.2-20        affy_1.86.0             miniUI_0.1.2           
 [52] processx_3.8.6          lattice_0.22-7          tibble_3.3.0           
 [55] shiny_1.11.1            withr_3.0.2             evaluate_1.0.4         
-[58] sandpaper_0.17.1        xml2_1.4.0              circlize_0.4.16        
+[58] sandpaper_0.17.2.9000   xml2_1.4.0              circlize_0.4.16        
 [61] pillar_1.11.0           affyio_1.78.0           BiocManager_1.30.26    
 [64] renv_1.1.5              DT_0.33                 foreach_1.5.2          
 [67] shinyjs_2.1.0           scales_1.4.0            xtable_1.8-4           
