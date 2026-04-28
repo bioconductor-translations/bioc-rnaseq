@@ -745,22 +745,22 @@ other attached packages:
 [15] knitr_1.50                 
 
 loaded via a namespace (and not attached):
- [1] renv_1.2.1              SparseArray_1.8.1       xml2_1.5.2             
- [4] RSQLite_2.4.2           lattice_0.22-7          tinkr_0.3.1            
+ [1] renv_1.2.2              SparseArray_1.8.1       xml2_1.5.2             
+ [4] RSQLite_2.4.2           lattice_0.22-7          tinkr_0.3.0            
  [7] magrittr_2.0.5          evaluate_1.0.4          grid_4.5.3             
 [10] fastmap_1.2.0           blob_1.2.4              jsonlite_2.0.0         
-[13] Matrix_1.7-3            processx_3.8.7          DBI_1.2.3              
-[16] ps_1.9.2                BiocManager_1.30.26     httr_1.4.7             
+[13] Matrix_1.7-3            processx_3.9.0          DBI_1.2.3              
+[16] ps_1.9.3                BiocManager_1.30.26     httr_1.4.7             
 [19] purrr_1.2.2             UCSC.utils_1.4.0        Biostrings_2.76.0      
 [22] abind_1.4-8             cli_3.6.6               rlang_1.2.0            
 [25] crayon_1.5.3            XVector_0.48.0          bit64_4.6.0-1          
 [28] cachem_1.1.0            withr_3.0.2             DelayedArray_0.34.1    
 [31] yaml_2.3.10             S4Arrays_1.8.1          tools_4.5.3            
-[34] sandpaper_0.20.1.9000   memoise_2.0.1           GenomeInfoDbData_1.2.14
+[34] sandpaper_0.20.1        memoise_2.0.1           GenomeInfoDbData_1.2.14
 [37] assertthat_0.2.1        png_0.1-8               vctrs_0.7.3            
 [40] R6_2.6.1                lifecycle_1.0.5         KEGGREST_1.48.1        
 [43] bit_4.6.0               pkgconfig_2.0.3         callr_3.7.6            
-[46] glue_1.8.0              xfun_0.52               pegboard_0.7.9         
+[46] glue_1.8.1              xfun_0.52               pegboard_0.7.9         
 [49] compiler_4.5.3         
 ```
 
