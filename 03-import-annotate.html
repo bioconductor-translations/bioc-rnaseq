@@ -163,25 +163,12 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         3. Rに量的データをインポートして注釈を付ける
         </span>
-      </button>
+      
     </div><!--/div.accordion-header-->
-
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
-      <div class="accordion-body">
-        <ul><li><a href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80">パッケージを読み込む</a></li>
-<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80">データを読み込む</a></li>
-<li><a href="#summarizedexperiment%E3%82%92%E7%B5%84%E3%81%BF%E7%AB%8B%E3%81%A6%E3%82%8B">SummarizedExperimentを組み立てる</a></li>
-<li><a href="#summarizedexperiment%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%99%E3%82%8B">SummarizedExperimentを保存する</a></li>
-<li><a href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%94%B1%E6%9D%A5%E3%81%A8%E5%86%8D%E7%8F%BE%E6%80%A7">データの由来と再現性</a></li>
-<li><a href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E6%B3%A8%E9%87%88">遺伝子注釈</a></li>
-<li><a href="#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E6%83%85%E5%A0%B1">セッション情報</a></li>
-        </ul></div><!--/div.accordion-body-->
-    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -293,18 +280,20 @@
         </div>
 
         
-
-<p>::::::::::::::::::::::::::::::::::::::: objectives</p>
-<ul><li>量的データをSummarizedExperimentオブジェクトにインポートする方法を学びます。</li>
-<li>オブジェクトに追加の遺伝子注釈を追加する方法を学びます。
-::::::::::::::::::::::::::::::::::::::::::::::::::</li>
-</ul><p>:::::::::::::::::::::::::::::::::::::::: questions</p>
-<ul><li>量的遺伝子発現データをRで下流の統計分析に適したオブジェクトにインポートするにはどうすればよいですか？</li>
-<li>通常使用される遺伝子識別子の種類は何ですか？
-それらのマッピングはどのように行われますか？
-::::::::::::::::::::::::::::::::::::::::::::::::::</li>
-</ul><section><h2 class="section-heading" id="パッケージを読み込む">パッケージを読み込む<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"></a></h2>
-<hr class="half-width"><p>このエピソードでは、アドオンRパッケージの関数をいくつか使用します。
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul><li><p>量的遺伝子発現データをRで下流の統計分析に適したオブジェクトにインポートするにはどうすればよいですか？</p></li>
+<li>
+<p>通常使用される遺伝子識別子の種類は何ですか？
+それらのマッピングはどのように行われますか？</p>
+<p>::::::::::::::::::::::::::::::::::::::::::::::::::</p>
+</li>
+</ul><p>このエピソードでは、アドオンRパッケージの関数をいくつか使用します。
 それらを使用するためには、<code>library</code>から読み込む必要があります。</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -320,8 +309,7 @@
 <p><code>there is no package called 'XXXX'</code>というエラーメッセージが表示された場合、これはこのバージョンのRに対して、パッケージがまだインストールされていないことを意味します。このワークショップに必要なすべてのパッケージをインストールするには、<a href="https://carpentries-incubator.github.io/bioc-rnaseq/index.html" class="external-link">Summary
 and Setup</a>の下部を参照してください。
 インストールする必要がある場合は、上記の<code>library</code>コマンドを再実行してそれらを読み込むことを忘れないでください。</p>
-</section><section><h2 class="section-heading" id="データを読み込む">データを読み込む<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"></a></h2>
-<hr class="half-width"><p>前回のエピソードでは、Rを使用してインターネットから4つのファイルをダウンロードし、それらをコンピュータに保存しました。
+<p>前回のエピソードでは、Rを使用してインターネットから4つのファイルをダウンロードし、それらをコンピュータに保存しました。
 しかし、これらのファイルはまだRに読み込まれていないため、作業することができません。
 <a href="https://pubmed.ncbi.nlm.nih.gov/28696309/" class="external-link">Blackmore et
 al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢のオスとメスのC57BL/6マウスは、インフルエンザ感染前の0日目、感染後の4日目および8日目に収集されました。
@@ -333,8 +321,6 @@ al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢の
 各遺伝子ごとのサンプルあたりのカウントに加えて、どのサンプルがどの性別/時間点/複製に属するかの情報も必要です。
 遺伝子に関しては、注釈と呼ばれる追加の情報があると便利です。
 前回ダウンロードしたデータファイルを読み込み、探索し始めましょう：</p>
-<div class="section level3">
-<h3 id="カウント">カウント<a class="anchor" aria-label="anchor" href="#%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88"></a></h3>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -359,9 +345,6 @@ al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢の
 ただし、ビューワは<code>counts</code>オブジェクト内部のデータを変更できないため、見るだけで、永久に並べ替えたり編集したりすることはできません。
 終了したら、タブのXを使ってビューワを閉じます。
 行名は遺伝子シンボルであり、列名はGEOのサンプルIDであるようです。これは、私たちがどのサンプルが何かを教えてくれないため、あまり有益ではありません。</p>
-</div>
-<div class="section level3">
-<h3 id="サンプルの注釈">サンプルの注釈<a class="anchor" aria-label="anchor" href="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AE%E6%B3%A8%E9%87%88"></a></h3>
 <p>次に、サンプルの注釈を読み込みます。
 カウント行列の列にはサンプルが含まれているため、オブジェクトに<code>coldata</code>という名前を付けます：</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -385,9 +368,6 @@ al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢の
 </div>
 <p>今、サンプルが行にあり、GEOサンプルIDが行名として付いています。そして、私たちには10列の情報があります。
 このワークショップで最も便利な列は、<code>geo_accession</code>（再度、GEOサンプルID）、<code>sex</code>、および<code>time</code>です。</p>
-</div>
-<div class="section level3">
-<h3 id="遺伝子の注釈">遺伝子の注釈<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E3%81%AE%E6%B3%A8%E9%87%88"></a></h3>
 <p>カウントには遺伝子シンボルしかありませんが、それは短くて人間の脳にとってはある程度認識可能ですが、実際に測定された遺伝子の正確な同定子としてはあまり利便性がありません。
 そのため、著者によって提供された追加の遺伝子注釈が必要です。
 <code>count</code>および<code>coldata</code>ファイルはカンマ区切り値（.csv）形式でしたが、遺伝子注釈ファイルにはそれが使用できません。なぜなら、説明には、カンマを含む可能性があるため、.csvファイルを正しく読み込むのを妨げるからです。
@@ -484,9 +464,7 @@ al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢の
 さらに、ほとんどのBioconductorパッケージは同じコアデータインフラストラクチャの周りに構築されているため、<code>SummarizedExperiment</code>オブジェクトを認識し、操作できるようになります。
 最も人気のある2つのRNA-seq統計分析パッケージは、統計結果用に追加のスロットがある<code>SummarizedExperiment</code>に類似した独自の拡張S4クラスを持っています：<a href="https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#the-deseqdataset" class="external-link">DESeq2</a>の<code>DESeqDataSet</code>および<a href="https://www.rdocumentation.org/packages/edgeR/versions/3.14.0/topics/DGEList-class" class="external-link">edgeR</a>の<code>DGEList</code>です。
 統計分析に使用するものが何であれ、データを<code>SummarizedExperiment</code>に入れることから始めることができます。</p>
-</div>
-</section><section><h2 class="section-heading" id="summarizedexperimentを組み立てる">SummarizedExperimentを組み立てる<a class="anchor" aria-label="anchor" href="#summarizedexperiment%E3%82%92%E7%B5%84%E3%81%BF%E7%AB%8B%E3%81%A6%E3%82%8B"></a></h2>
-<hr class="half-width"><p>これらのオブジェクトから<code>SummarizedExperiment</code>を作成します。</p>
+<p>これらのオブジェクトから<code>SummarizedExperiment</code>を作成します。</p>
 <ul><li>
 <code>count</code>オブジェクトは<code>assays</code>スロットに保存されます。</li>
 <li>サンプル情報を持つ<code>coldata</code>オブジェクトは、<code>colData</code>スロットに保存されます（<em><strong>サンプルメタデータ</strong></em>）</li>
@@ -980,8 +958,7 @@ Male_Day8_24          24   Male_Day8_24 Male_Day8  </code></pre>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="summarizedexperimentを保存する">SummarizedExperimentを保存する<a class="anchor" aria-label="anchor" href="#summarizedexperiment%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%99%E3%82%8B"></a></h2>
-<hr class="half-width"><p>これが、私たちの<code>SummarizedExperiment</code>オブジェクトを作成するための少しのコードと時間でした。
+<p>これが、私たちの<code>SummarizedExperiment</code>オブジェクトを作成するための少しのコードと時間でした。
 ワークショップ全体で使用し続ける必要があるため、Rのメモリに戻すためにコンピュータ上の実際の単一ファイルとして保存することが有用です。
 Rに特有のファイルを保存するには、<code>saveRDS()</code>関数を使用し、後で<code>readRDS()</code>関数を使用して再び読み込むことができます。</p>
 <div class="codewrapper sourceCode" id="cb54">
@@ -992,8 +969,7 @@ Rに特有のファイルを保存するには、<code>saveRDS()</code>関数を
 <span><span class="fu">rm</span><span class="op">(</span><span class="va">se</span><span class="op">)</span> <span class="co"># オブジェクトを削除！</span></span>
 <span><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu">readRDS</span><span class="op">(</span><span class="st">"data/GSE96870_se.rds"</span><span class="op">)</span></span></code></pre>
 </div>
-</section><section><h2 class="section-heading" id="データの由来と再現性">データの由来と再現性<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%94%B1%E6%9D%A5%E3%81%A8%E5%86%8D%E7%8F%BE%E6%80%A7"></a></h2>
-<hr class="half-width"><p>これで、RNA-SeqデータをRにインポートしてさまざまなパッケージによる分析で使用可能な形式の外部.rdsファイルを作成しました。
+<p>これで、RNA-SeqデータをRにインポートしてさまざまなパッケージによる分析で使用可能な形式の外部.rdsファイルを作成しました。
 ただし、インターネットからダウンロードした3つのファイルから.rdsファイルを作成するために使用したコードの記録を保持する必要があります。
 ファイルの由来はどうなっていますか？
 つまり、それらはどこから来ており、どのように作成されたのですか？
@@ -1042,8 +1018,7 @@ mRNA遺伝子をサブセットにする方法</h3>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="遺伝子注釈">遺伝子注釈<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E6%B3%A8%E9%87%88"></a></h2>
-<hr class="half-width"><p>カウントデータを生成する人によっては、追加の遺伝子注釈の適切なファイルがないかもしれません。
+<p>カウントデータを生成する人によっては、追加の遺伝子注釈の適切なファイルがないかもしれません。
 遺伝子シンボルやENTREZID、あるいは他のデータベースのIDのみが存在するかもしれません。
 遺伝子注釈の特性は、その注釈戦略と情報源によって異なります。
 たとえば、RefSeqヒト遺伝子モデル（つまり、NCBIのEntrez）は、さまざまな研究でよくサポートされ、広く使用されています。
@@ -1157,8 +1132,7 @@ $`100008586`
 $`10001`
 [1] "ARC33"     "NY-REN-28" "MED6"     </code></pre>
 </div>
-</section><section><h2 class="section-heading" id="セッション情報">セッション情報<a class="anchor" aria-label="anchor" href="#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E6%83%85%E5%A0%B1"></a></h2>
-<hr class="half-width"><div class="codewrapper sourceCode" id="cb70">
+<div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1217,12 +1191,42 @@ loaded via a namespace (and not attached):
 [46] glue_1.8.1              xfun_0.52               pegboard_0.7.9
 [49] compiler_4.5.3         </code></pre>
 </div>
-<p>::: keypoints</p>
-<ul><li>使用される遺伝子発現定量ツールによって、出力を<code>SummarizedExperiment</code>または<code>DGEList</code>オブジェクトに読み込む方法が異なります（多くはBioconductorパッケージで配布されています）。</li>
-<li>EnsemblやEntrez
-IDなどの安定した遺伝子識別子は、RNA-seq分析全体で主要な識別子として使用されるべきで、解釈を容易にするために遺伝子シンボルを追加する必要があります。
-:::</li>
-</ul></section></div> <!-- / div.lesson-content -->
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
+<ul><li><p>使用される遺伝子発現定量ツールによって、出力を<code>SummarizedExperiment</code>または<code>DGEList</code>オブジェクトに読み込む方法が異なります（多くはBioconductorパッケージで配布されています）。</p></li>
+<li>
+<p>EnsemblやEntrez
+IDなどの安定した遺伝子識別子は、RNA-seq分析全体で主要な識別子として使用されるべきで、解釈を容易にするために遺伝子シンボルを追加する必要があります。</p>
+<p>:::</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul><li><p>量的データをSummarizedExperimentオブジェクトにインポートする方法を学びます。</p></li>
+<li>
+<p>オブジェクトに追加の遺伝子注釈を追加する方法を学びます。</p>
+<p>::::::::::::::::::::::::::::::::::::::::::::::::::</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+</div>
+
+
+      </div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="02-setup.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="04-exploratory-qc.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -1277,7 +1281,7 @@ IDなどの安定した遺伝子識別子は、RNA-seq分析全体で主要な�
   "identifier": "https://carpentries-incubator.github.io/bioc-rnaseq/03-import-annotate.html",
   "dateCreated": "2020-09-15",
   "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "datePublished": "2026-05-05"
 }
 
   </script><script>

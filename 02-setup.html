@@ -389,7 +389,7 @@ RNA-seqデータ分析の場合、このディレクトリには通常、<code>*
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <figure style="text-align: center"><img src="fig/02_setup/folders_working_dir.png" alt="Your working directory should look like this" width="1221" class="figure mx-auto d-block"><figcaption>
 Your working directory should look like this
@@ -462,13 +462,13 @@ data folder.
 <h3 class="callout-title">残りのデータセットファイルをダウンロードする</h3>
 <div class="callout-content">
 <p>このレッスンの残りの部分に必要なデータセットファイルがあと3つあります。</p>
-<table class="table"><colgroup><col width="68%"><col width="31%"></colgroup><thead><tr class="header"><th>URL</th>
+<table class="table"><colgroup><col width="68%"><col width="31%"></colgroup><thead><tr><th>URL</th>
 <th>ファイル名</th>
-</tr></thead><tbody><tr class="odd"><td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_cerebellum.csv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_cerebellum.csv</a></td>
+</tr></thead><tbody><tr><td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_cerebellum.csv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_cerebellum.csv</a></td>
 <td>GSE96870_coldata_cerebellum.csv</td>
-</tr><tr class="even"><td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_all.csv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_all.csv</a></td>
+</tr><tr><td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_all.csv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_all.csv</a></td>
 <td>GSE96870_coldata_all.csv</td>
-</tr><tr class="odd"><td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_rowranges.tsv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_rowranges.tsv</a></td>
+</tr><tr><td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_rowranges.tsv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_rowranges.tsv</a></td>
 <td>GSE96870_rowranges.tsv</td>
 </tr></tbody></table><p><code>download.file</code>関数を使用して、作業ディレクトリの<code>data</code>フォルダにファイルをダウンロードします。</p>
 </div>
@@ -479,7 +479,7 @@ data folder.
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -572,7 +572,7 @@ data folder.
   "identifier": "https://carpentries-incubator.github.io/bioc-rnaseq/02-setup.html",
   "dateCreated": "2020-09-15",
   "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "datePublished": "2026-05-05"
 }
 
   </script><script>

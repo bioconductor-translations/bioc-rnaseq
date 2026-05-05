@@ -694,7 +694,7 @@ RNA-seqデータ分析の場合、このディレクトリには通常、<code>*
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <figure style="text-align: center"><img src="../fig/02_setup/folders_working_dir.png" alt="Your working directory should look like this" width="1221" class="figure mx-auto d-block"><figcaption>
 Your working directory should look like this
@@ -779,20 +779,20 @@ data folder.
 <col width="68%">
 <col width="31%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>URL</th>
 <th>ファイル名</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_cerebellum.csv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_cerebellum.csv</a></td>
 <td>GSE96870_coldata_cerebellum.csv</td>
 </tr>
-<tr class="even">
+<tr>
 <td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_all.csv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_coldata_all.csv</a></td>
 <td>GSE96870_coldata_all.csv</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><a href="https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_rowranges.tsv" class="external-link uri">https://github.com/carpentries-incubator/bioc-rnaseq/raw/main/episodes/data/GSE96870_rowranges.tsv</a></td>
 <td>GSE96870_rowranges.tsv</td>
 </tr>
@@ -807,7 +807,7 @@ data folder.
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -856,22 +856,21 @@ data folder.
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
-<p>::::::::::::::::::::::::::::::::::::::: objectives</p>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
 <ul>
-<li>量的データをSummarizedExperimentオブジェクトにインポートする方法を学びます。</li>
-<li>オブジェクトに追加の遺伝子注釈を追加する方法を学びます。
-::::::::::::::::::::::::::::::::::::::::::::::::::</li>
+<li><p>量的遺伝子発現データをRで下流の統計分析に適したオブジェクトにインポートするにはどうすればよいですか？</p></li>
+<li>
+<p>通常使用される遺伝子識別子の種類は何ですか？
+それらのマッピングはどのように行われますか？</p>
+<p>::::::::::::::::::::::::::::::::::::::::::::::::::</p>
+</li>
 </ul>
-<p>:::::::::::::::::::::::::::::::::::::::: questions</p>
-<ul>
-<li>量的遺伝子発現データをRで下流の統計分析に適したオブジェクトにインポートするにはどうすればよいですか？</li>
-<li>通常使用される遺伝子識別子の種類は何ですか？
-それらのマッピングはどのように行われますか？
-::::::::::::::::::::::::::::::::::::::::::::::::::</li>
-</ul>
-<section><h2 class="section-heading" id="パッケージを読み込む">パッケージを読み込む<a class="anchor" aria-label="anchor" href="#%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"></a>
-</h2>
-<hr class="half-width">
 <p>このエピソードでは、アドオンRパッケージの関数をいくつか使用します。
 それらを使用するためには、<code>library</code>から読み込む必要があります。</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -888,9 +887,6 @@ data folder.
 <p><code>there is no package called 'XXXX'</code>というエラーメッセージが表示された場合、これはこのバージョンのRに対して、パッケージがまだインストールされていないことを意味します。このワークショップに必要なすべてのパッケージをインストールするには、<a href="https://carpentries-incubator.github.io/bioc-rnaseq/index.html" class="external-link">Summary
 and Setup</a>の下部を参照してください。
 インストールする必要がある場合は、上記の<code>library</code>コマンドを再実行してそれらを読み込むことを忘れないでください。</p>
-</section><section><h2 class="section-heading" id="データを読み込む">データを読み込む<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80"></a>
-</h2>
-<hr class="half-width">
 <p>前回のエピソードでは、Rを使用してインターネットから4つのファイルをダウンロードし、それらをコンピュータに保存しました。
 しかし、これらのファイルはまだRに読み込まれていないため、作業することができません。
 <a href="https://pubmed.ncbi.nlm.nih.gov/28696309/" class="external-link">Blackmore et
@@ -903,9 +899,6 @@ al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢の
 各遺伝子ごとのサンプルあたりのカウントに加えて、どのサンプルがどの性別/時間点/複製に属するかの情報も必要です。
 遺伝子に関しては、注釈と呼ばれる追加の情報があると便利です。
 前回ダウンロードしたデータファイルを読み込み、探索し始めましょう：</p>
-<div class="section level3">
-<h3 id="カウント">カウント<a class="anchor" aria-label="anchor" href="#%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88"></a>
-</h3>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -930,10 +923,6 @@ al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢の
 ただし、ビューワは<code>counts</code>オブジェクト内部のデータを変更できないため、見るだけで、永久に並べ替えたり編集したりすることはできません。
 終了したら、タブのXを使ってビューワを閉じます。
 行名は遺伝子シンボルであり、列名はGEOのサンプルIDであるようです。これは、私たちがどのサンプルが何かを教えてくれないため、あまり有益ではありません。</p>
-</div>
-<div class="section level3">
-<h3 id="サンプルの注釈">サンプルの注釈<a class="anchor" aria-label="anchor" href="#%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AE%E6%B3%A8%E9%87%88"></a>
-</h3>
 <p>次に、サンプルの注釈を読み込みます。
 カウント行列の列にはサンプルが含まれているため、オブジェクトに<code>coldata</code>という名前を付けます：</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -957,10 +946,6 @@ al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢の
 </div>
 <p>今、サンプルが行にあり、GEOサンプルIDが行名として付いています。そして、私たちには10列の情報があります。
 このワークショップで最も便利な列は、<code>geo_accession</code>（再度、GEOサンプルID）、<code>sex</code>、および<code>time</code>です。</p>
-</div>
-<div class="section level3">
-<h3 id="遺伝子の注釈">遺伝子の注釈<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E3%81%AE%E6%B3%A8%E9%87%88"></a>
-</h3>
 <p>カウントには遺伝子シンボルしかありませんが、それは短くて人間の脳にとってはある程度認識可能ですが、実際に測定された遺伝子の正確な同定子としてはあまり利便性がありません。
 そのため、著者によって提供された追加の遺伝子注釈が必要です。
 <code>count</code>および<code>coldata</code>ファイルはカンマ区切り値（.csv）形式でしたが、遺伝子注釈ファイルにはそれが使用できません。なぜなら、説明には、カンマを含む可能性があるため、.csvファイルを正しく読み込むのを妨げるからです。
@@ -1061,10 +1046,6 @@ al. 2017</a>の元の実験デザインはかなり複雑でした。8週齢の
 さらに、ほとんどのBioconductorパッケージは同じコアデータインフラストラクチャの周りに構築されているため、<code>SummarizedExperiment</code>オブジェクトを認識し、操作できるようになります。
 最も人気のある2つのRNA-seq統計分析パッケージは、統計結果用に追加のスロットがある<code>SummarizedExperiment</code>に類似した独自の拡張S4クラスを持っています：<a href="https://bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#the-deseqdataset" class="external-link">DESeq2</a>の<code>DESeqDataSet</code>および<a href="https://www.rdocumentation.org/packages/edgeR/versions/3.14.0/topics/DGEList-class" class="external-link">edgeR</a>の<code>DGEList</code>です。
 統計分析に使用するものが何であれ、データを<code>SummarizedExperiment</code>に入れることから始めることができます。</p>
-</div>
-</section><section><h2 class="section-heading" id="summarizedexperimentを組み立てる">SummarizedExperimentを組み立てる<a class="anchor" aria-label="anchor" href="#summarizedexperiment%E3%82%92%E7%B5%84%E3%81%BF%E7%AB%8B%E3%81%A6%E3%82%8B"></a>
-</h2>
-<hr class="half-width">
 <p>これらのオブジェクトから<code>SummarizedExperiment</code>を作成します。</p>
 <ul>
 <li>
@@ -1563,9 +1544,6 @@ Male_Day8_24          24   Male_Day8_24 Male_Day8  </code></pre>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="summarizedexperimentを保存する">SummarizedExperimentを保存する<a class="anchor" aria-label="anchor" href="#summarizedexperiment%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%99%E3%82%8B"></a>
-</h2>
-<hr class="half-width">
 <p>これが、私たちの<code>SummarizedExperiment</code>オブジェクトを作成するための少しのコードと時間でした。
 ワークショップ全体で使用し続ける必要があるため、Rのメモリに戻すためにコンピュータ上の実際の単一ファイルとして保存することが有用です。
 Rに特有のファイルを保存するには、<code>saveRDS()</code>関数を使用し、後で<code>readRDS()</code>関数を使用して再び読み込むことができます。</p>
@@ -1577,9 +1555,6 @@ Rに特有のファイルを保存するには、<code>saveRDS()</code>関数を
 <span><span class="fu">rm</span><span class="op">(</span><span class="va">se</span><span class="op">)</span> <span class="co"># オブジェクトを削除！</span></span>
 <span><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu">readRDS</span><span class="op">(</span><span class="st">"data/GSE96870_se.rds"</span><span class="op">)</span></span></code></pre>
 </div>
-</section><section><h2 class="section-heading" id="データの由来と再現性">データの由来と再現性<a class="anchor" aria-label="anchor" href="#%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E7%94%B1%E6%9D%A5%E3%81%A8%E5%86%8D%E7%8F%BE%E6%80%A7"></a>
-</h2>
-<hr class="half-width">
 <p>これで、RNA-SeqデータをRにインポートしてさまざまなパッケージによる分析で使用可能な形式の外部.rdsファイルを作成しました。
 ただし、インターネットからダウンロードした3つのファイルから.rdsファイルを作成するために使用したコードの記録を保持する必要があります。
 ファイルの由来はどうなっていますか？
@@ -1629,9 +1604,6 @@ mRNA遺伝子をサブセットにする方法</h3>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="遺伝子注釈">遺伝子注釈<a class="anchor" aria-label="anchor" href="#%E9%81%BA%E4%BC%9D%E5%AD%90%E6%B3%A8%E9%87%88"></a>
-</h2>
-<hr class="half-width">
 <p>カウントデータを生成する人によっては、追加の遺伝子注釈の適切なファイルがないかもしれません。
 遺伝子シンボルやENTREZID、あるいは他のデータベースのIDのみが存在するかもしれません。
 遺伝子注釈の特性は、その注釈戦略と情報源によって異なります。
@@ -1748,9 +1720,6 @@ $`100008586`
 $`10001`
 [1] "ARC33"     "NY-REN-28" "MED6"     </code></pre>
 </div>
-</section><section><h2 class="section-heading" id="セッション情報">セッション情報<a class="anchor" aria-label="anchor" href="#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E6%83%85%E5%A0%B1"></a>
-</h2>
-<hr class="half-width">
 <div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1810,13 +1779,43 @@ loaded via a namespace (and not attached):
 [46] glue_1.8.1              xfun_0.52               pegboard_0.7.9
 [49] compiler_4.5.3         </code></pre>
 </div>
-<p>::: keypoints</p>
+<div id="keypoints1" class="callout keypoints">
+<div class="callout-square">
+<i class="callout-icon" data-feather="key"></i>
+</div>
+<span class="callout-header">Key Points</span>
+<div class="callout-inner">
+<div class="callout-content">
 <ul>
-<li>使用される遺伝子発現定量ツールによって、出力を<code>SummarizedExperiment</code>または<code>DGEList</code>オブジェクトに読み込む方法が異なります（多くはBioconductorパッケージで配布されています）。</li>
-<li>EnsemblやEntrez
-IDなどの安定した遺伝子識別子は、RNA-seq分析全体で主要な識別子として使用されるべきで、解釈を容易にするために遺伝子シンボルを追加する必要があります。
-:::</li>
-</ul></section></section><section id="aio-04-exploratory-qc"><p>Content from <a href="04-exploratory-qc.html">Exploratory analysis and quality control</a></p>
+<li><p>使用される遺伝子発現定量ツールによって、出力を<code>SummarizedExperiment</code>または<code>DGEList</code>オブジェクトに読み込む方法が異なります（多くはBioconductorパッケージで配布されています）。</p></li>
+<li>
+<p>EnsemblやEntrez
+IDなどの安定した遺伝子識別子は、RNA-seq分析全体で主要な識別子として使用されるべきで、解釈を容易にするために遺伝子シンボルを追加する必要があります。</p>
+<p>:::</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li><p>量的データをSummarizedExperimentオブジェクトにインポートする方法を学びます。</p></li>
+<li>
+<p>オブジェクトに追加の遺伝子注釈を追加する方法を学びます。</p>
+<p>::::::::::::::::::::::::::::::::::::::::::::::::::</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></section><section id="aio-04-exploratory-qc"><p>Content from <a href="04-exploratory-qc.html">Exploratory analysis and quality control</a></p>
 <hr>
 <p> Last updated on 2026-04-28 |
 
@@ -1947,7 +1946,13 @@ important considerations?</li>
 </div>
 </div>
 </div>
-<p>::::::::::::::::::::::::::::::::::: solution</p>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div class="accordion-body">
 <ol style="list-style-type: decimal"><li>
 </li></ol>
 <div class="codewrapper sourceCode" id="cb7">
@@ -2011,12 +2016,15 @@ meaningful.</li>
 </ul>
 <p>Potential considerations:</p>
 <ul>
-<li>Is a gene expressed in both groups?</li>
-<li>How many samples of each group express a gene?
-:::::::::::::::::::::::::::::::::::</li>
-</ul></section><section><h2 class="section-heading" id="library-size-differences">Library size differences<a class="anchor" aria-label="anchor" href="#library-size-differences"></a>
+<li><p>Is a gene expressed in both groups?</p></li>
+<li>
+<p>How many samples of each group express a gene?</p>
+<p>:::::::::::::::::::::::::::::::::::</p>
+</li>
+</ul>
+<div class="section level2">
+<h2 id="library-size-differences">Library size differences<a class="anchor" aria-label="anchor" href="#library-size-differences"></a>
 </h2>
-<hr class="half-width">
 <p>Differences in the total number of reads assigned to genes between
 samples typically occur for technical reasons. In practice, it means
 that we can not simply compare a gene’s raw read count directly between
@@ -2099,9 +2107,11 @@ design formula are characters, converting to factors</code></pre>
 <span>    <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>    <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Library size"</span>, y <span class="op">=</span> <span class="st">"Size factor"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/04-exploratory-qc-rendered-est-size-factors-1.png" alt="Scatterplot with library size on the x-axis and size factor on the y-axis, showing a high correlation between the two variables." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="transform-data">Transform data<a class="anchor" aria-label="anchor" href="#transform-data"></a>
+<figure><img src="../fig/04-exploratory-qc-rendered-est-size-factors-1.png" alt="Scatterplot with library size on the x-axis and size factor on the y-axis, showing a high correlation between the two variables." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
+</div>
+<div class="section level2">
+<h2 id="transform-data">Transform data<a class="anchor" aria-label="anchor" href="#transform-data"></a>
 </h2>
-<hr class="half-width">
 <p>There is a rich literature on methods for exploratory analysis. Most
 of these work best in situations where the variance of the input data
 (here, each gene) is relatively independent of the average value. For
@@ -2127,9 +2137,11 @@ the correlation between average read count and variance.</p>
 <code class="sourceCode R"><span><span class="va">vsd</span> <span class="op">&lt;-</span> <span class="fu">DESeq2</span><span class="fu">::</span><span class="fu">vst</span><span class="op">(</span><span class="va">dds</span>, blind <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu">meanSdPlot</span><span class="op">(</span><span class="fu">assay</span><span class="op">(</span><span class="va">vsd</span><span class="op">)</span>, ranks <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/04-exploratory-qc-rendered-mean-sd-plot-vst-1.png" alt="Hexagonal heatmap with the mean variance-stabilized values on the x-axis and the standard deviation of these on the y-axis. The trend is generally flat, with no clear association between the mean and standard deviation." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="heatmaps-and-clustering">Heatmaps and clustering<a class="anchor" aria-label="anchor" href="#heatmaps-and-clustering"></a>
+<figure><img src="../fig/04-exploratory-qc-rendered-mean-sd-plot-vst-1.png" alt="Hexagonal heatmap with the mean variance-stabilized values on the x-axis and the standard deviation of these on the y-axis. The trend is generally flat, with no clear association between the mean and standard deviation." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
+</div>
+<div class="section level2">
+<h2 id="heatmaps-and-clustering">Heatmaps and clustering<a class="anchor" aria-label="anchor" href="#heatmaps-and-clustering"></a>
 </h2>
-<hr class="half-width">
 <p>There are many ways to cluster samples based on their similarity of
 expression patterns. One simple way is to calculate Euclidean distances
 between all pairs of samples (longer distance = more different) and then
@@ -2157,9 +2169,11 @@ females reliably separate.</p>
 <span>                   time <span class="op">=</span> <span class="fu">c</span><span class="op">(</span>Day0 <span class="op">=</span> <span class="st">"yellow"</span>, Day4 <span class="op">=</span> <span class="st">"forestgreen"</span>, Day8 <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/04-exploratory-qc-rendered-heatmap-1.png" alt="Heatmap of Euclidean distances between all pairs of samples, with hierarchical cluster dendrogram for both rows and columns. Samples from day 8 cluster separately from samples from days 0 and 4. Within days 0 and 4, the main clustering is instead by sex." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="pca">PCA<a class="anchor" aria-label="anchor" href="#pca"></a>
+<figure><img src="../fig/04-exploratory-qc-rendered-heatmap-1.png" alt="Heatmap of Euclidean distances between all pairs of samples, with hierarchical cluster dendrogram for both rows and columns. Samples from day 8 cluster separately from samples from days 0 and 4. Within days 0 and 4, the main clustering is instead by sex." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure>
+</div>
+<div class="section level2">
+<h2 id="pca">PCA<a class="anchor" aria-label="anchor" href="#pca"></a>
 </h2>
-<hr class="half-width">
 <p>Principal component analysis is a dimensionality reduction method,
 which projects the samples into a lower-dimensional space. This
 lower-dimensional representation can be used for visualization, or as
@@ -2234,7 +2248,7 @@ suggest?</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li><p>The major signal in this data (37% variance) is associated with
@@ -2279,7 +2293,7 @@ class <code>DESeqTransform</code> as input. You can transform a
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2336,9 +2350,10 @@ class <code>DESeqTransform</code> as input. You can transform a
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="interactive-exploratory-data-analysis">Interactive exploratory data analysis<a class="anchor" aria-label="anchor" href="#interactive-exploratory-data-analysis"></a>
+</div>
+<div class="section level2">
+<h2 id="interactive-exploratory-data-analysis">Interactive exploratory data analysis<a class="anchor" aria-label="anchor" href="#interactive-exploratory-data-analysis"></a>
 </h2>
-<hr class="half-width">
 <p>Often it is useful to look at QC plots in an interactive way to
 directly explore different experimental factors or get insides from
 someone without coding experience. Useful tools for interactive
@@ -2375,9 +2390,10 @@ using iSEE</h3>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
+</div>
+<div class="section level2">
+<h2 id="session-info">Session info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<hr class="half-width">
 <div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2470,6 +2486,11 @@ normalized and log-transformed (or similar- more
 sensitive/sophisticated), to be closer to homoskedastic. Other methods
 work directly on the raw counts.</li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3525,7 +3546,7 @@ mean expression of a gene between male and female mice?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3613,7 +3634,7 @@ Day4, Day8) in the male spinal cord samples, and visualize it using
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5062,26 +5083,26 @@ size of the <em>XY gene set</em> (i.e. the number of member genes),
 <span class="math inline">\(n\)</span> is the number of total genes.</p>
 <center>
 <table class="table">
-<thead><tr class="header">
+<thead><tr>
 <th></th>
 <th>In the gene set</th>
 <th>Not in the gene set</th>
 <th>Total</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><strong>DE</strong></td>
 <td><span class="math inline">\(n_{11}\)</span></td>
 <td><span class="math inline">\(n_{12}\)</span></td>
 <td><span class="math inline">\(n_{1+}\)</span></td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>Not DE</strong></td>
 <td><span class="math inline">\(n_{21}\)</span></td>
 <td><span class="math inline">\(n_{22}\)</span></td>
 <td><span class="math inline">\(n_{2+}\)</span></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>Total</strong></td>
 <td><span class="math inline">\(n_{+1}\)</span></td>
 <td><span class="math inline">\(n_{+2}\)</span></td>
@@ -5131,26 +5152,26 @@ size of the <em>XY gene set</em> (i.e. the number of member genes),
 <p>And we fill these numbers into the 2x2 contingency table:</p>
 <center>
 <table class="table">
-<thead><tr class="header">
+<thead><tr>
 <th></th>
 <th>In the gene set</th>
 <th>Not in the gene set</th>
 <th>Total</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><strong>DE</strong></td>
 <td>13</td>
 <td>41</td>
 <td>54</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>Not DE</strong></td>
 <td>1121</td>
 <td>20023</td>
 <td>21144</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>Total</strong></td>
 <td>1134</td>
 <td>20064</td>
@@ -5229,26 +5250,26 @@ the Fisher’s exact test. E.g. let’s put whether genes are in the gene
 sets on rows, and put whether genes are DE on columns.</p>
 <center>
 <table class="table">
-<thead><tr class="header">
+<thead><tr>
 <th></th>
 <th>DE</th>
 <th>Not DE</th>
 <th>Total</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><strong>In the gene set</strong></td>
 <td>13</td>
 <td>1121</td>
 <td>1134</td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>Not in the gene set</strong></td>
 <td>41</td>
 <td>20023</td>
 <td>20064</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>Total</strong></td>
 <td>54</td>
 <td>21144</td>
@@ -5585,7 +5606,7 @@ convert a list to a two-column data frame?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5664,62 +5685,62 @@ release, there are the following organism packages:</p>
 <col width="41%">
 <col width="12%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Package</th>
 <th>Organism</th>
 <th>Package</th>
 <th>Organism</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>org.Hs.eg.db</td>
 <td>Human</td>
 <td>org.Mm.eg.db</td>
 <td>Mouse</td>
 </tr>
-<tr class="even">
+<tr>
 <td>org.Rn.eg.db</td>
 <td>Rat</td>
 <td>org.Dm.eg.db</td>
 <td>Fly</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>org.At.tair.db</td>
 <td>Arabidopsis</td>
 <td>org.Dr.eg.db</td>
 <td>Zebrafish</td>
 </tr>
-<tr class="even">
+<tr>
 <td>org.Sc.sgd.db</td>
 <td>Yeast</td>
 <td>org.Ce.eg.db</td>
 <td>Worm</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>org.Bt.eg.db</td>
 <td>Bovine</td>
 <td>org.Gg.eg.db</td>
 <td>Chicken</td>
 </tr>
-<tr class="even">
+<tr>
 <td>org.Ss.eg.db</td>
 <td>Pig</td>
 <td>org.Mmu.eg.db</td>
 <td>Rhesus</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>org.Cf.eg.db</td>
 <td>Canine</td>
 <td>org.EcK12.eg.db</td>
 <td>E coli strain K12</td>
 </tr>
-<tr class="even">
+<tr>
 <td>org.Xl.eg.db</td>
 <td>Xenopus</td>
 <td>org.Pt.eg.db</td>
 <td>Chimp</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>org.Ag.eg.db</td>
 <td>Anopheles</td>
 <td>org.EcSakai.eg.db</td>
@@ -6744,26 +6765,26 @@ non-DE genes or non-gene-set genes.</p>
 <col width="38%">
 <col width="13%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th></th>
 <th>In the gene set</th>
 <th>Not in the gene set</th>
 <th>Total</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><strong>DE</strong></td>
 <td><span class="math inline">\(n_{11}\)</span></td>
 <td><span class="math inline">\(n_{12}\)</span></td>
 <td><span class="math inline">\(n_{1+}\)</span></td>
 </tr>
-<tr class="even">
+<tr>
 <td><strong>Not DE</strong></td>
 <td><span class="math inline">\(n_{21}\)</span></td>
 <td><span class="math inline">\(\color{red}{n_{22}}\)</span></td>
 <td><span class="math inline">\(\color{red}{n_{2+}}\)</span></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><strong>Total</strong></td>
 <td><span class="math inline">\(n_{+1}\)</span></td>
 <td><span class="math inline">\(\color{red}{n_{+2}}\)</span></td>
@@ -7379,8 +7400,8 @@ quantified.</li>
   "url": "https://carpentries-incubator.github.io/bioc-rnaseq/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/bioc-rnaseq/instructor/aio.html",
   "dateCreated": "2020-09-15",
-  "dateModified": "2026-04-28",
-  "datePublished": "2026-04-28"
+  "dateModified": "2026-05-05",
+  "datePublished": "2026-05-05"
 }
 
   </script><script>
